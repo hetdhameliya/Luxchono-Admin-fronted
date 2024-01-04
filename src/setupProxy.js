@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: process.env.BASE_URL,
+      target:"https://luxchono.onrender.com",
       secure: false,
       changeOrigin: true,
       pathRewrite: { "^/api": "" },
