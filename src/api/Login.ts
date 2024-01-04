@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import BASE_URL from "./utils";
+import BASE_URL from "./string";
 
 
 export const LoginApi = createApi({
