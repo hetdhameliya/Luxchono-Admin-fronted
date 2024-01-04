@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const LoginApi = createApi({
     reducerPath: 'loginApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.BASE_URL
+        baseUrl: "https://luxchono.onrender.com"
     }),
     endpoints: (builder: any) => ({
         login: builder.mutation({
