@@ -67,13 +67,13 @@ export default function Register() {
         setOpenConfirmation(false);
     };
 
-    const Login = ()=>{
+    const Login = () => {
         navigate("/login")
     }
 
     return (
         <div className='flex items-center justify-center  h-[100vh] registercontainer' >
-            <Paper className='!rounded-[40px] w-[1080px] overflow-hidden registerpepar  paperboxshadow '>
+            <Paper className='!rounded-[40px] w-[1080px] overflow-hidden registerpepar  paperboxshadow' >
                 <Grid container>
                     <Grid item xs={12} sm={12} md={6}>
                         <div >

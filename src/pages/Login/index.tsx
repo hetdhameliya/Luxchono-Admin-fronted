@@ -42,11 +42,12 @@ export default function Login() {
                 const response: any = await Login(values);
 
                 console.log(response, "responseee")
-                const { success, message, token } = response?.data;
+                const { success, message, token,data } = response?.data;
                 if (success) {
                     toast.success(message)
                     await localStorage.setItem("lw-token", token)
-                    // const token = localStorage.getItem("lw-token");
+                    await localStorage.setItem("lw-username", data?.username)
+                    navigate("/product")
                 } else {
                     toast.error(message)
                 }
@@ -129,9 +130,9 @@ export default function Login() {
 
                                         <div className='flex items-center justify-center gap-[4px] mt-[0.5rem]'>
                                             <Typography component="span">
-                                            {STRING.REGISTER_LABEL}
+                                                {STRING.REGISTER_LABEL}
                                                 <a href='/register' className='!font-bold text-main underline'>
-                                                {STRING.SIGN_UP}
+                                                    {STRING.SIGN_UP}
                                                 </a>
                                             </Typography>
                                         </div>

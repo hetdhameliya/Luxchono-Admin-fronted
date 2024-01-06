@@ -6,6 +6,7 @@ import Buttons from '../../components/common/Buttons';
 import { useVerifyEmailQuery } from '../../api/Login';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Loader from '../../components/common/Loader';
+import { STRING } from '../../constants/String';
 
 export default function VerifyEmail() {
     const location = useLocation();
@@ -21,17 +22,14 @@ export default function VerifyEmail() {
         <div>
             <div className='navbar'>
                 <div>
-                    <img style={{ width: "80px", height: "80px" }} src={Logo} alt="LoginImg" className='LoginImg' />
+                    <img style={{ width: "75px", height: "75px" }} src={Logo} alt="LoginImg" className='LoginImg' />
                 </div>
                 <div>
-                    <span className='navbar_heading'> {"Luxchono"}</span>
+                    <span className='navbar_heading'> {STRING.LUXCHONO}</span>
                 </div>
             </div>
-
             <div className='main_div'>
-
                 {isFetching ? (<Loader />) : (
-
                     <>
                         <div>
                             <TaskAltIcon className='verify_icon' />
@@ -39,7 +37,7 @@ export default function VerifyEmail() {
                         <span className='div_label'>
                             {data?.message}
                         </span>
-                        <Buttons onClick={Login} type={"submit"} text={"Go To Login"} variant={"contained"} className={"verifybtton"} />
+                        <Buttons onClick={Login} type={"submit"} text={STRING.NOW_GOTO_LOGIN} variant={"contained"} className={"verifybtton"} />
                     </>
                 )
                 }
