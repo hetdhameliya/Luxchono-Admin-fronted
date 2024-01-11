@@ -155,9 +155,11 @@ export default function BrandPage() {
         <div className='productContainer'>
             <Paper className='paperboxshadow h-[83px] flex justify-between items-center p-[1rem] mt-[0.5rem]'>
                 <div className='productbtns flex justify-between'>
-                    <div className='flex gap-[10px]'>
+                    <div className='flex gap-[18px] items-center'>
                         <Buttons onClick={handleCvsExport} startIcon={<IosShareIcon />} text={STRING.EXPORT_BUTTON} variant={"outlined"} className={"productheaderbtn1"} />
-                        {/* <Buttons startIcon={<SystemUpdateAltIcon />} variant={"outlined"} text={"Import"} className={"productheaderbtn1"} /> */}
+                        <div className='h-[25px] rounded-[5px]  bg-secondary'>
+                            {rows && rows?.length > 0 ? (<span className='text-[14px]  p-[0.5rem] text-main '>{`(${rows?.length.toString().padStart(2, '0')}) Brand Available`}</span>) : (null)}
+                        </div>
                     </div>
                 </div>
                 <div className='flex gap-[10px]'>

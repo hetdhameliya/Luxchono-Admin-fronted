@@ -283,9 +283,11 @@ export default function ProductPage() {
         <div className='productContainer'>
             <Paper className='h-[83px] flex justify-between items-center p-[1rem] mt-[0.5rem] paperboxshadow'>
                 <div className='productbtns flex justify-between'>
-                    <div className='flex gap-[10px]'>
+                    <div className='flex gap-[18px] items-center'>
                         <Buttons onClick={handleCvsExport} startIcon={<IosShareIcon />} text={"Export"} variant={"outlined"} className={"productheaderbtn1"} />
-                        {/* <Buttons startIcon={<SystemUpdateAltIcon />} variant={"outlined"} text={"Import"} className={"productheaderbtn1"} /> */}
+                        <div className='h-[25px] rounded-[5px]  bg-secondary '>
+                            {rows && rows?.length > 0 ? (<span className='text-[14px]  p-[0.5rem] text-main '>{`(${rows?.length.toString().padStart(2, '0')}) Product Available`}</span>) : (null)}
+                        </div>
                     </div>
                 </div>
 

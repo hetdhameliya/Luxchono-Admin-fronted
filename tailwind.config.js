@@ -13,7 +13,8 @@ module.exports = {
         main: "#964315",
         header: "#DCDBDB",
         red: "#FA3E3E",
-        back: "#F8F8F8"
+        back: "#F8F8F8",
+        secondary : "#F9F4F1"
       }
     },
   },

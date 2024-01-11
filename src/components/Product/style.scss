@@ -92,6 +92,7 @@
 
 
 .add_product {
+    width: 100% !important;
 
     .close_icon {
         margin-left: -8px !important;
@@ -103,6 +104,10 @@
         -webkit-appearance: none;
         margin: 0;
     }
+
+    .css-zgmdl2-MuiFormControl-root-MuiTextField-root{
+        width: 100%;
+    }
 }
 
 .product_add_button {
@@ -112,7 +117,7 @@
 }
 
 .productField {
-    width: 70rem;
+    width: 100%;
 
     .MuiInputBase-root {
         border-radius: 12px !important;
