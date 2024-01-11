@@ -15,7 +15,7 @@ export const ProductRow = ({ row, index, handleDeleteOpen }: any) => {
     return (
         <>
             <TableCell
-                width={"20%"}
+                width={"19%"}
                 align="left"
                 component="th"
                 id={labelId}
@@ -26,7 +26,7 @@ export const ProductRow = ({ row, index, handleDeleteOpen }: any) => {
                     {row?.name}
                 </div>
             </TableCell>
-            <TableCell width={"11%"} align="left" padding="none">{`${row.category}`}</TableCell>
+            <TableCell width={"13%"} align="left" padding="none">{`${row.category}`}</TableCell>
             <TableCell width={"11%"} align="left" padding="none">{row?.brand}</TableCell>
             <TableCell width={"10%"} align="left" padding="none">{`${row?.price?.toLocaleString('en-IN')} ₹` || "-"}</TableCell>
             <TableCell width={"10%"} align="left" padding="none">{row?.stock}</TableCell>
