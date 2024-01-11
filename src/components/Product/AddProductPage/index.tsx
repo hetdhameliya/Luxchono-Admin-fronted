@@ -326,7 +326,7 @@ export default function AddProductPage() {
                                 name={"productModel"} className={'productField'} />
                         </div>
 
-                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
+                        <div className='!flex !item-center  !gap-[15px] mt-[1rem] textareas'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
                                     {STRING.PRODUCT_DESC}

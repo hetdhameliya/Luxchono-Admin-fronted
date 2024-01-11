@@ -105,8 +105,10 @@
         margin: 0;
     }
 
-    .css-zgmdl2-MuiFormControl-root-MuiTextField-root{
-        width: 100%;
+    .textareas{
+        .MuiTextField-root{
+            width: 100% !important;
+        }
     }
 }
 
