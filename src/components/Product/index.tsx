@@ -279,6 +279,8 @@ export default function ProductPage() {
         setIsProductDrawerOpen(!isProductDrawerOpen);
     };
 
+
+
     return (
         <div className='productContainer'>
             <Paper className='h-[83px] flex justify-between items-center p-[1rem] mt-[0.5rem] paperboxshadow'>
@@ -332,6 +334,7 @@ export default function ProductPage() {
             <div className='mt-[1rem]'>
                 <Tables handleDeleteOpen={handleDeleteSingleOpenConfirmation} selected={selected} setSelected={setSelected} Product={"Product"} getSelectedDeleteRows={getSelectedDeleteRows} search={search} headCells={headCells} rows={rows} isFetching={isFetching} />
             </div>
+        
 
             <Dialogs loading={deleteProductLoading} textClose={STRING.DELETE_CLOSE_BUTTON} textYes={STRING.DELETE_YES_BUTTON} yesClass={"product_delete_yes"} closeClass={"product_delete_cancel"} icon={<DeleteIcon className='text-red !text-[4rem] !mb-[-15px]' />} open={openDeleteConfirmation} onClose={handleDeleteCloseConfirmation} tital={STRING.DELETE_SURE} desc={STRING.PRODUCT_DELETE_DESC} Action={handleDelete} />
 
@@ -341,7 +344,6 @@ export default function ProductPage() {
             {/* product filter */}
 
             <ProductDrawer startPrice={startPrice} endPrice={endPrice} startStock={startStock} endStock={endStock} setStartPrice={setStartPrice} setEndPrice={setEndPrice} setStartStock={setStartStock} setEndStock={setEndStock} isProductDrawerOpen={isProductDrawerOpen} toggleProductDrawer={toggleProductDrawer} />
-
         </div>
     )
 }

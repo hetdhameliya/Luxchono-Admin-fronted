@@ -164,34 +164,35 @@ export default function EditProductPage() {
                 price: Yup.string().trim().required(STRING.PRODUCT_PRICE_REQUIRED),
                 productModel: Yup.string().trim().required(STRING.PRODUCT_MODEL_REQUIRED),
                 warranty: Yup.string().trim().required(STRING.PRODUCT_WARRANTY__REQUIRED),
-                // dummyPrice: Yup.string().required(STRING.PRODUCT_DUMMYPRICE__REQUIRED),
-                thumbnail: Yup.mixed().required(STRING.PRODUCT_THUMNAIL_REQUIRED)
-                    .test("fileFormat", STRING.PRODUCT_THUMNAIL_FORMAT, (value: any) => {
-                        if (value) {
-                            const acceptedFormats = ["image/png"].includes(value.type);
-                            const isStringValuePng = typeof value === 'string' && value.endsWith(".png");
-                            return acceptedFormats || isStringValuePng;
-                        }
-                        return true;
-                    }),
-                image: Yup.array().min(1, STRING.PRODUCT_IMAGE_REQUIRED).max(4, STRING.PRODUCT_MAXIMU_IMAGE).test("fileFormat", STRING.IMAGE_FORMATES, (value: any) => {
-                    if (value && value?.length > 0) {
-                        const acceptedFormats = ["image/svg+xml", "image/png", "image/jpeg", "image/jpg"];
-                        const isValidFormat = value.every((file: any) => {
-                            return acceptedFormats.includes(file.type);
-                        });
+                dummyPrice: Yup.string().required(STRING.PRODUCT_DUMMYPRICE__REQUIRED),
+                thumbnail: Yup.mixed().required(STRING.PRODUCT_THUMNAIL_REQUIRED),
+                // .test("fileFormat", STRING.PRODUCT_THUMNAIL_FORMAT, (value: any) => {
+                //     if (value) {
+                //         const acceptedFormats = ["image/png"].includes(value.type);
+                //         const isStringValuePng = typeof value === 'string' && value.endsWith(".png");
+                //         return acceptedFormats || isStringValuePng;
+                //     }
+                //     return true;
+                // }),
+                image: Yup.array().min(1, STRING.PRODUCT_IMAGE_REQUIRED).max(4, STRING.PRODUCT_MAXIMU_IMAGE),
+                // .test("fileFormat", STRING.IMAGE_FORMATES, (value: any) => {
+                //     if (value && value?.length > 0) {
+                //         const acceptedFormats = ["image/svg+xml", "image/png", "image/jpeg", "image/jpg"];
+                //         const isValidFormat = value.every((file: any) => {
+                //             return acceptedFormats.includes(file.type);
+                //         });
 
-                        const accepteDefaltFormats = value.every((file: any) => {
-                            const accepteDefaltFormats = typeof file === 'string' && file.endsWith(".png") ||
-                                typeof file === 'string' && file.endsWith(".jpeg") ||
-                                typeof file === 'string' && file.endsWith(".jpg") ||
-                                typeof file === 'string' && file.endsWith(".svg");
-                            return acceptedFormats.includes(file.type) || accepteDefaltFormats;
-                        });
-                        return isValidFormat || accepteDefaltFormats;
-                    }
-                    return true;
-                }),
+                //         const accepteDefaltFormats = value.every((file: any) => {
+                //             const accepteDefaltFormats = typeof file === 'string' && file.endsWith(".png") ||
+                //                 typeof file === 'string' && file.endsWith(".jpeg") ||
+                //                 typeof file === 'string' && file.endsWith(".jpg") ||
+                //                 typeof file === 'string' && file.endsWith(".svg");
+                //             return acceptedFormats.includes(file.type) || accepteDefaltFormats;
+                //         });
+                //         return isValidFormat || accepteDefaltFormats;
+                //     }
+                //     return true;
+                // }),
             }),
 
             onSubmit: async (values: any) => {
@@ -232,7 +233,7 @@ export default function EditProductPage() {
 
                         <div className='flex item-center !gap-[15px]'>
 
-                            <div className='w-[12rem] !flex !justify-end mt-[0.5rem] '>
+                            <div className='w-[11rem] !flex !justify-end mt-[0.5rem] '>
                                 <Typography component='span' className='!font-bold'>
                                     {STRING.PRODUCT_IMAGE}
                                 </Typography>
@@ -301,7 +302,7 @@ export default function EditProductPage() {
                         </div>
 
                         <div className='flex item-center !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] !flex !justify-end mt-[0.5rem] '>
+                            <div className='w-[11rem] !flex !justify-end mt-[0.5rem] '>
                                 <Typography component='span' className='!font-bold'>
                                     {STRING.PRODUCT_THUMBNAIL}
                                 </Typography>
@@ -339,8 +340,8 @@ export default function EditProductPage() {
                                     {STRING.PRODUCT_CATEGORY}
                                 </Typography>
                             </div>
-                            <div className='flex-col'>
-                                <Selects selectedValues={selectedCategoryValues} setSelectedValues={setSelectedCategoryValues} placeholder={STRING.PRODUCT_CATEGORY_PLACHOLDER} width={"70rem"} height={"45px"} options={filteredCategory} isMulti={true} />
+                            <div className='flex-col w-[100%]'>
+                                <Selects selectedValues={selectedCategoryValues} setSelectedValues={setSelectedCategoryValues} placeholder={STRING.PRODUCT_CATEGORY_PLACHOLDER} height={"45px"} options={filteredCategory} isMulti={true} />
                                 {AddProduct.touched.category && AddProduct.errors.category && (
                                     <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
                                         {AddProduct.errors.category.toString()}
@@ -355,8 +356,8 @@ export default function EditProductPage() {
                                     {STRING.PRODUCT_BRAND}
                                 </Typography>
                             </div>
-                            <div className='flex-col'>
-                                <Selects options={filteredBrand} selectedValues={selectedBrandValues} setSelectedValues={setSelectedBrandValues} placeholder={STRING.PRODUCT_BRAND_PLACHOLDER} width={"70rem"} height={"45px"} />
+                            <div className='flex-col w-[100%]'>
+                                <Selects options={filteredBrand} selectedValues={selectedBrandValues} setSelectedValues={setSelectedBrandValues} placeholder={STRING.PRODUCT_BRAND_PLACHOLDER} height={"45px"} />
                                 {(AddProduct.submitCount > 0 && AddProduct.errors.brand) && (
                                     <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
                                         {AddProduct.errors.brand.toString()}
@@ -395,7 +396,7 @@ export default function EditProductPage() {
                                 </Typography>
                             </div>
                             <Textareas
-                                helperText={AddProduct.touched.description && AddProduct.errors.description} onChange={AddProduct.handleChange} value={AddProduct.values.description} name={"description"} width={"70rem"} rows={3} placeholder={STRING.PRODUCT_DESC_PLACHOLDER} />
+                                helperText={AddProduct.touched.description && AddProduct.errors.description} onChange={AddProduct.handleChange} value={AddProduct.values.description} name={"description"} rows={3} placeholder={STRING.PRODUCT_DESC_PLACHOLDER} />
                         </div>
 
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>

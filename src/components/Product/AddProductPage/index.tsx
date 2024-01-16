@@ -133,24 +133,26 @@ export default function AddProductPage() {
                 price: Yup.string().trim().required(STRING.PRODUCT_PRICE_REQUIRED),
                 productModel: Yup.string().trim().required(STRING.PRODUCT_MODEL_REQUIRED),
                 warranty: Yup.string().trim().required(STRING.PRODUCT_WARRANTY__REQUIRED),
-                // dummyPrice: Yup.string().required(STRING.PRODUCT_DUMMYPRICE__REQUIRED),
-                thumbnail: Yup.mixed().required(STRING.PRODUCT_THUMNAIL_REQUIRED).test("fileFormat", STRING.PRODUCT_THUMNAIL_FORMAT, (value: any) => {
-                    if (value) {
-                        const acceptedFormats = ["image/png"];
-                        return acceptedFormats.includes(value.type);
-                    }
-                    return true;
-                }),
-                image: Yup.array().min(1, STRING.PRODUCT_IMAGE_REQUIRED).max(4, STRING.PRODUCT_MAXIMU_IMAGE).test("fileFormat", STRING.IMAGE_FORMATES, (value: any) => {
-                    if (value && value.length > 0) {
-                        const acceptedFormats = ["image/svg+xml", "image/png", "image/jpeg", "image/jpg"];
-                        const isValidFormat = value.every((file: any) => {
-                            return acceptedFormats.includes(file.type);
-                        });
-                        return isValidFormat;
-                    }
-                    return true;
-                }),
+                dummyPrice: Yup.string().required(STRING.PRODUCT_DUMMYPRICE__REQUIRED),
+                thumbnail: Yup.mixed().required(STRING.PRODUCT_THUMNAIL_REQUIRED),
+                // .test("fileFormat", STRING.PRODUCT_THUMNAIL_FORMAT, (value: any) => {
+                //     if (value) {
+                //         const acceptedFormats = ["image/png"];
+                //         return acceptedFormats.includes(value.type);
+                //     }
+                //     return true;
+                // }),
+                image: Yup.array().min(1, STRING.PRODUCT_IMAGE_REQUIRED).max(4, STRING.PRODUCT_MAXIMU_IMAGE),
+                // .test("fileFormat", STRING.IMAGE_FORMATES, (value: any) => {
+                //     if (value && value.length > 0) {
+                //         const acceptedFormats = ["image/svg+xml", "image/png", "image/jpeg", "image/jpg"];
+                //         const isValidFormat = value.every((file: any) => {
+                //             return acceptedFormats.includes(file.type);
+                //         });
+                //         return isValidFormat;
+                //     }
+                //     return true;
+                // }),
             }),
             onSubmit: async (values: any) => {
                 values.stock = Number(values.stock);
@@ -188,7 +190,7 @@ export default function AddProductPage() {
                     <div className='flex !flex-col mt-[1rem] pl-[3rem] pr-[3rem] '>
                         <div className='flex item-center !gap-[15px]'>
 
-                            <div className='w-[12rem] !flex !justify-end mt-[0.5rem] '>
+                            <div className='w-[11rem] !flex !justify-end mt-[0.5rem] '>
                                 <Typography component='span' className='!font-bold'>
                                     {STRING.PRODUCT_IMAGE}
                                 </Typography>
@@ -237,7 +239,7 @@ export default function AddProductPage() {
                         </div>
 
                         <div className='flex item-center !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] !flex !justify-end mt-[0.5rem] '>
+                            <div className='w-[11rem] !flex !justify-end mt-[0.5rem] '>
                                 <Typography component='span' className='!font-bold'>
                                     {STRING.PRODUCT_THUMBNAIL}
                                 </Typography>
@@ -277,7 +279,7 @@ export default function AddProductPage() {
                                 </Typography>
                             </div>
                             <div className='flex-col w-[100%]'>
-                                <Selects selectedValues={selectedCategoryValues} setSelectedValues={setSelectedCategoryValues} placeholder={STRING.PRODUCT_CATEGORY_PLACHOLDER}  height={"45px"} options={filteredCategory} isMulti={true} />
+                                <Selects selectedValues={selectedCategoryValues} setSelectedValues={setSelectedCategoryValues} placeholder={STRING.PRODUCT_CATEGORY_PLACHOLDER} height={"45px"} options={filteredCategory} isMulti={true} />
                                 {AddProduct.touched.category && AddProduct.errors.category && (
                                     <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
                                         {AddProduct.errors.category.toString()}
