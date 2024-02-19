@@ -19,7 +19,6 @@ import AuthHandler from './AuthHandler';
 import AddCategory from '../pages/Category/AddCategory';
 import EditCategory from '../pages/Category/EditCategory';
 
-
 export default function Router() {
   return (
     <>
