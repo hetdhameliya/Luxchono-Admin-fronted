@@ -25,7 +25,7 @@ export default function BrandPage() {
         search: search.trim(),
     })
 
- 
+
 
     const [rows, setRows] = useState<any[]>([]);
     const navigate = useNavigate();

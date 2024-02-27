@@ -104,6 +104,7 @@ export const BrandRow = ({ row, index, handleDeleteOpen }: any) => {
 }
 
 export const OrdersRow = ({ row, index, handleDeleteOpen, handleUpdateOpenConfirmation }: any) => {
+    console.log(row, "rowwwwwww")
     const navigate = useNavigate();
     const handleStatusesText = (status: any) => {
         switch (status) {
@@ -135,14 +136,13 @@ export const OrdersRow = ({ row, index, handleDeleteOpen, handleUpdateOpenConfir
                 scope="row"
                 padding="none">
                 <div className='flex'>
-                    {row?.id}
+                    {row?.orderId}
                 </div>
             </TableCell>
-            <TableCell width={"20%"} align="left" padding="none">{row.userName}</TableCell>
-            <TableCell width={"20%"} align="left" padding="none">{formattedDate}</TableCell>
-            <TableCell width={"10%"} align="left" padding="none">{row?.method}</TableCell>
-            <TableCell width={"12%"} align="left" padding="none">{`${row?.totalAmt?.toLocaleString('en-IN')} ₹`}</TableCell>
-            <TableCell width={"13%"} align="left" padding="none">
+            <TableCell  align="left" padding="none">{row.email}</TableCell>
+            <TableCell  align="left" padding="none">{formattedDate}</TableCell>
+            <TableCell  align="left" padding="none">{`${row?.paymentAmount?.toLocaleString('en-IN')} ₹`}</TableCell>
+            <TableCell  align="left" padding="none">
                 {/* <span style={handleStatusesBadge(row?.status)} onClick={() => handleUpdateOpenConfirmation(row)}>
                     {handleStatusesText(row?.status)}
                 </span> */}

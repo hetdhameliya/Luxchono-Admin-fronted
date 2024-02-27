@@ -259,7 +259,7 @@ export default function Tables({ headCells, rows, isFetching, search, getSelecte
                                             {Product && <ProductRow row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
                                             {Category && <CategoryRow row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
                                             {Brand && <BrandRow row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
-                                            {Orders && <OrdersRow handleUpdateOpenConfirmation={handleUpdateOpenConfirmation} row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
+                                            {Orders && <OrdersRow handleUpdateOpenConfirmation={handleUpdateOpenConfirmation} row={row} index={index} />}
                                             {Customer && <CustomerRow row={row} index={index} />}
                                             {Offer && <OfferRow row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
 
