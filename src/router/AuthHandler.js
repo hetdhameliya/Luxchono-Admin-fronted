@@ -7,12 +7,15 @@ const AuthHandler = () => {
   const location = useLocation();
   const { pathname } = location;
   const { state } = location;
+
   useEffect(() => {
     if (token) {
-      ["/login", "/register", "/admin-verify-email"]?.includes(pathname) &&
+      (["/login", "/register", "/admin-verify-email", "/forgotpassword", "/reset-password"]?.includes(pathname)) &&
+
+      console.log("heloooooooooooo")
         navigate("/product");
     } else {
-      if (!["/register", "/admin-verify-email"]?.includes(pathname)) {
+      if (!["/register", "/admin-verify-email", "/forgotpassword", "/reset-password"]?.includes(pathname)) {
         navigate("/login");
       }
     }

@@ -18,6 +18,8 @@ import Category from '../pages/Category';
 import AuthHandler from './AuthHandler';
 import AddCategory from '../pages/Category/AddCategory';
 import EditCategory from '../pages/Category/EditCategory';
+import ForgotPassword from '../pages/ForgotPassword';
+import ResetPassword from '../pages/ResetPassword';
 
 export default function Router() {
   return (
@@ -28,6 +30,8 @@ export default function Router() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/admin-verify-email" element={<VerifyEmail />}></Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path="/reset-password" element={<ResetPassword />}></Route>
           <Route path="/brand" element={<Brand />}></Route>
           <Route path="/addbrand" element={<AddBrand />}></Route>
           <Route path="/editbrand" element={<EditBrand />}></Route>

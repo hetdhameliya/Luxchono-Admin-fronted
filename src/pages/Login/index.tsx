@@ -10,7 +10,7 @@ import { STRING } from '../../constants/String';
 import { REGEX } from "../../constants/Regex";
 import { toast } from "react-toastify";
 import Loader from '../../components/common/Loader';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -120,6 +120,9 @@ export default function Login() {
                                                 icons={showPassword ? <VisibilityIcon className='!text-[1.4rem]' /> : <VisibilityOffIcon className='!text-[1.4rem]' />}
                                             />
                                         </div>
+                                        <Link className='flex justify-end mt-[0.2rem] text-main text-[15px] cursor-pointer' to={'/forgotpassword'} >
+                                            {STRING.FORGOT_PASSWORD_LINK}
+                                        </Link>
                                     </div>
                                 </div>
                                 {isLoading ? (<div className='flex items-center justify-center mt-[3rem]'>

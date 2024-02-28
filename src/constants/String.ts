@@ -38,6 +38,7 @@ export const STRING = {
   EMAIL_VERFIY_MESSAGE:
     "Please verify your account in mail with Invitation link",
   LUXCHONO: "Luxchono",
+  FORGOT_PASSWORD_LINK: 'Forgot password?',
 
   NOW_GOTO_LOGIN: "Now go to Login",
   CHECK_MAIL_BOX: "Check your mail",
