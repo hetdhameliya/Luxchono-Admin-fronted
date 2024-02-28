@@ -142,6 +142,7 @@ export const STRING = {
   ORDER_NUMBER: "Mobile number :-",
   ORDER_IMAGE: "Image :-",
 
+
   //offer
   ADD_OFFER: "Add Offer",
   OFFER_IMAGE: "image :-",

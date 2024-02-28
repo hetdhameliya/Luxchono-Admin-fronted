@@ -139,10 +139,10 @@ export const OrdersRow = ({ row, index, handleDeleteOpen, handleUpdateOpenConfir
                     {row?.orderId}
                 </div>
             </TableCell>
-            <TableCell  align="left" padding="none">{row.email}</TableCell>
-            <TableCell  align="left" padding="none">{formattedDate}</TableCell>
-            <TableCell  align="left" padding="none">{`${row?.paymentAmount?.toLocaleString('en-IN')} ₹`}</TableCell>
-            <TableCell  align="left" padding="none">
+            <TableCell align="left" padding="none">{row.email}</TableCell>
+            <TableCell align="left" padding="none">{formattedDate}</TableCell>
+            <TableCell align="left" padding="none">{`${row?.paymentAmount?.toLocaleString('en-IN')} ₹`}</TableCell>
+            <TableCell align="left" padding="none">
                 {/* <span style={handleStatusesBadge(row?.status)} onClick={() => handleUpdateOpenConfirmation(row)}>
                     {handleStatusesText(row?.status)}
                 </span> */}
@@ -166,7 +166,7 @@ export const OrdersRow = ({ row, index, handleDeleteOpen, handleUpdateOpenConfir
             </TableCell>
             <TableCell align="left" padding="none">
                 <div className='flex gap-[5px]'>
-                    <RemoveRedEyeOutlinedIcon className='text-black !text-[22px]' onClick={() => navigate("/vieworder", { state: row })} />
+                    <RemoveRedEyeOutlinedIcon className='text-black !text-[22px]' onClick={() => navigate("/vieworder", { state: row?.data })} />
                     {/* <DeleteOutlineOutlinedIcon className='text-black' onClick={() => handleDeleteOpen(row)} /> */}
                 </div>
             </TableCell>

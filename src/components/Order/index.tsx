@@ -113,7 +113,8 @@ export default function OrderPage() {
         paymentAmount: any,
         status: any,
         shippingAddress: any,
-        products: any
+        products: any,
+        data: any
 
 
     ): any {
@@ -124,7 +125,8 @@ export default function OrderPage() {
             paymentAmount: paymentAmount,
             status: status,
             shippingAddress: shippingAddress,
-            products: products
+            products: products,
+            data: data
         };
     }
 
@@ -140,7 +142,8 @@ export default function OrderPage() {
                 item.paymentAmount,
                 item.status,
                 item.address,
-                item.products
+                item.products,
+                item
             );
         });
         setRows(rowise)
