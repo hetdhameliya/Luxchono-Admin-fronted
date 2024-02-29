@@ -63,7 +63,7 @@ export const STRING = {
   CATEGORY_SEARCH_PLACHOLDER: "Search Category",
   CATEGORY_NAME: "Category Name :-",
   CATEGORY_IMAGE: "Image :-",
-  ICON: "Icon :-",
+  ICON: "Logo :-",
   CATEGORY_NAME_REQUIRED: "Name is required",
   CATEGORY_NAME_FORMAT: "Category must be at least 3 characters",
   CATEGORY_NAME_IMAGE: "Image is required",

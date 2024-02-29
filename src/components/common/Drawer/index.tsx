@@ -117,14 +117,22 @@ export default function Drawers() {
                         </ListItem>
                     </List>
 
-                    <div className="logout_icon_div" onClick={handleOpenConfirmation}>
-                        <div >
-                            <LogoutIcon className='logout_icon' />
+                    <div >
+                        <div className="logout_icon_div" onClick={handleOpenConfirmation}>
+
+                            <div className="logout_icon_div2">
+                                <div >
+                                    <LogoutIcon className='logout_icon' />
+                                </div>
+                                <span className='logout_text' >
+                                    {STRING.LOGOUT}
+                                </span>
+                            </div>
+
                         </div>
-                        <span className='logout_text' >
-                            {STRING.LOGOUT}
-                        </span>
                     </div>
+
+
                 </Drawer>
 
             </ThemeProvider>

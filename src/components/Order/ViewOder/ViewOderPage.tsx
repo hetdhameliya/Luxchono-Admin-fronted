@@ -20,7 +20,7 @@ export default function ViewOrderPage() {
         navigate('/order');
     };
 
-   
+
 
     const [openMoreInfo, setOpenMoreInfo] = useState(false);
 
@@ -142,7 +142,7 @@ export default function ViewOrderPage() {
                                                         </div>
 
                                                         <div>
-                                                            <span className='totalAmount'>{`Total Amount : ${state?.totalAmount?.toLocaleString("en-IN")} ₹`}</span>
+                                                            <span className='totalAmount'>{`Payment Amount : ${state?.paymentAmount?.toLocaleString("en-IN")} ₹`}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +168,7 @@ export default function ViewOrderPage() {
                                                                                 {products?.product?.name}
                                                                             </span>
                                                                         </span>
-                                                                        <span className="text-light" style={{ fontSize: "15px",fontWeight:"600" }}>
+                                                                        <span className="text-light" style={{ fontSize: "15px", fontWeight: "600" }}>
                                                                             {`(${products?.product?.productModel})`}
                                                                         </span>
                                                                         <span className='order_price text-main'>{`${products?.product?.price.toLocaleString("en-IN")}₹`}</span>
