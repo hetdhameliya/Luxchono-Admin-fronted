@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { prepareHeaders } from "./Utils";
 
 export const LoginApi = createApi({
     reducerPath: 'loginApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_BASE_URL
+        baseUrl: process.env.REACT_APP_BASE_URL,
+        prepareHeaders: prepareHeaders,
     }),
     endpoints: (builder: any) => ({
         login: builder.mutation({
@@ -40,12 +42,19 @@ export const LoginApi = createApi({
                 body: { newPassword },
             }),
         }),
+        ChangePassword: builder.mutation({
+            query: (body: any) => ({
+                url: '/change-password',
+                method: 'post',
+                body,
+            }),
+        }),
     }),
 
 
 });
 
-export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation } = LoginApi;
+export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation ,useChangePasswordMutation} = LoginApi;
 
 
 

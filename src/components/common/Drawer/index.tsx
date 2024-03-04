@@ -13,6 +13,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import QueueIcon from '@mui/icons-material/Queue';
 import MarkChatReadIcon from '@mui/icons-material/MarkChatRead';
 import NewReleasesIcon from '@mui/icons-material/NewReleases';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { STRING } from '../../../constants/String';
 import { useState } from 'react';
 import Dialogs from '../Dialogs';
@@ -113,6 +114,14 @@ export default function Drawers() {
                                     <LocalOfferIcon />
                                 </ListItemIcon>
                                 <ListItemText className='draewr_dashboard_text' primary="Offer" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding onClick={() => Navigate("/profile")} className={`draewr_dashboard_item ${location.pathname === "/profile" ? "active" : ""}`} >
+                            <ListItemButton component="a" disableRipple >
+                                <ListItemIcon className='draewr_dashboard_icon'>
+                                    <AccountCircleIcon />
+                                </ListItemIcon>
+                                <ListItemText className='draewr_dashboard_text' primary="Profile" />
                             </ListItemButton>
                         </ListItem>
                     </List>

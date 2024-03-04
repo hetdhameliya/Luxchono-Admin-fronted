@@ -94,16 +94,11 @@ export default function ViewOrderPage() {
                                                 <div className="mb-[0.5rem]">
 
                                                     <span className='text-black flex gap-[5px] '>
-
                                                         <span style={{ fontSize: "15px" }}>{"Delivery on"}</span>
                                                         <span style={{ fontSize: "15px", fontWeight: "600" }}> {dayjs(state?.deliveryDate).format('MMM DD, YYYY')}</span>
-
-
                                                     </span>
                                                 </div>
                                             </div>
-
-
 
                                             <div className="flex gap-[30px]">
                                                 <div>
@@ -126,6 +121,7 @@ export default function ViewOrderPage() {
                                                         </span>
                                                     </div>
                                                 </div>
+
 
                                                 <div>
                                                     <div>

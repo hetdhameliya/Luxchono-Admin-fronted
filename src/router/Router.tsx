@@ -20,6 +20,7 @@ import AddCategory from '../pages/Category/AddCategory';
 import EditCategory from '../pages/Category/EditCategory';
 import ForgotPassword from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
+import Profile from '../pages/Profile';
 
 export default function Router() {
   return (
@@ -46,6 +47,7 @@ export default function Router() {
           <Route path="/editcategory" element={<EditCategory />}></Route>
           <Route path="/offer" element={<Offer />}></Route>
           <Route path="/customer" element={<Customer />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter >

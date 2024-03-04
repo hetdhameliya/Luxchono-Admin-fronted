@@ -44,7 +44,7 @@ export default function ResetPassword() {
                     newPassword: values?.confirmPassword,
                     id: id
                 };
-                console.log(body,"bodybody")
+                console.log(body, "bodybody")
                 const response: any = await ResetPassword(body);
                 const { statusCode, message } = response?.data;
                 if (statusCode === 200) {
