@@ -42,8 +42,7 @@ export default function ProfilePage() {
                 flexGrow: 1,
                 bgcolor: "background.paper",
                 display: "flex",
-            }}
-        >
+            }}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
@@ -54,8 +53,7 @@ export default function ProfilePage() {
                     borderRight: 1,
                     borderColor: "divider",
                     minWidth: "100px !important"
-                }}
-            >
+                }}>
                 <Tab
                     label={"Details"}
                     {...a11yProps(0)}
@@ -78,20 +76,13 @@ export default function ProfilePage() {
                 />
             </Tabs>
             <TabPanel value={value} index={0}>
-
             </TabPanel>
             <TabPanel value={value} index={1} >
-
-
                 <ChangePassword />
-
-
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <h1>hello 3</h1>
             </TabPanel>
             <TabPanel value={value} index={3} width="85%">
-                <h1>hello 4</h1>
             </TabPanel>
         </Box>
     )
