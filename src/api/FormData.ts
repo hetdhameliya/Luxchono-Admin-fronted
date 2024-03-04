@@ -48,6 +48,7 @@ export const productFromDatApi = {
     formData.append("productModel", body.productModel);
     formData.append("warranty", body.warranty);
     formData.append("thumbnail", body.thumbnail)
+    formData.append("isActive", body.isActive)
     return formData;
   }
 };

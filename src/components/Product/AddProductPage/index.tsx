@@ -18,6 +18,7 @@ import { useFormik } from 'formik';
 import { useAddProductMutation } from '../../../api/Product';
 import { toast } from 'react-toastify';
 import Loader from '../../common/Loader';
+import Switchs from '../../common/Switchs';
 
 export default function AddProductPage() {
 
@@ -25,6 +26,7 @@ export default function AddProductPage() {
     const [ProductImages, setProductImages] = useState<any[]>([]);
     const [filteredCategory, setFilteredCategory] = useState<any[]>([]);
     const [filteredBrand, setFilteredBrand] = useState<any[]>([]);
+    const [isActive, setIsActive] = useState<any>(true);
     const { data: CategoryData, isFetching: CategoryFetching } = useGetAllCategoryQuery({});
     const navigate = useNavigate();
     const [selectedCategoryValues, setSelectedCategoryValues] = useState<any[]>([]);
@@ -40,6 +42,8 @@ export default function AddProductPage() {
             AddProduct.values.image.filter((_: any, index: number) => index !== indexToRemove)
         );
     };
+
+    console.log(isActive, "isActive")
 
     //product image upload
     const AddCategoryImg = () => {
@@ -122,6 +126,7 @@ export default function AddProductPage() {
                 warranty: "",
                 dummyPrice: "",
                 thumbnail: "",
+                isActive: isActive
             },
 
             validationSchema: Yup.object().shape({
@@ -156,6 +161,7 @@ export default function AddProductPage() {
             }),
             onSubmit: async (values: any) => {
                 values.stock = Number(values.stock);
+                values.isActive = isActive;
                 const response: any = await AddProducts(values);
                 const { message, statusCode } = response?.data;
                 if (statusCode === 200) {
@@ -385,6 +391,21 @@ export default function AddProductPage() {
                                 helperText={AddProduct.touched.warranty && AddProduct.errors.warranty} onChange={AddProduct.handleChange} values={AddProduct.values.warranty} autoComplete={'off'} placeholder={STRING.PRODUCT_WARRANTY_PLACHOLDER}
                                 name={"warranty"} className={'productField'} />
                         </div>
+
+
+
+                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
+                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
+                                <Typography component='span' className='!font-bold'>
+                                    {STRING.PRODUCT_ACTIVE}
+                                </Typography>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", marginTop: "0.5rem", width: "100%" }}>
+                                <Switchs isActive={isActive} setIsActive={setIsActive} />
+                            </div>
+                        </div>
+
+
                     </div>
                 </Paper>
             </form>

@@ -18,6 +18,7 @@ import { useFormik } from 'formik';
 import { useEditProductMutation } from '../../../api/Product';
 import { toast } from 'react-toastify';
 import Loader from '../../common/Loader';
+import Switchs from '../../common/Switchs';
 
 export default function EditProductPage() {
     const location = useLocation();
@@ -25,6 +26,7 @@ export default function EditProductPage() {
     const [imagePreviews, setImagePreviews] = useState<any[]>([]);
     const [ProductImages, setProductImages] = useState<any[]>([]);
     const [filteredCategory, setFilteredCategory] = useState<any[]>([]);
+    const [isActive, setIsActive] = useState<any>(true);
     const [filteredBrand, setFilteredBrand] = useState<any[]>([]);
     const { data: CategoryData, isFetching: CategoryFetching } = useGetAllCategoryQuery({});
     const navigate = useNavigate();
@@ -60,16 +62,13 @@ export default function EditProductPage() {
         AddProduct.setFieldValue("warranty", state?.warranty)
         AddProduct.setFieldValue("dummyPrice", state?.dummyPrice)
         AddProduct.setFieldValue("thumbnail", state?.thumbnail)
-
+        setIsActive(state?.isActive)
         setSelectedBrandValues(state?.brands)
         setSelectedCategoryValues(state?.defaultcategory)
-
         setThumbnailImage(state?.thumbnail)
         AddProduct.setFieldValue("thumbnail", state?.thumbnail)
-
         setImagePreviews(state?.image)
         AddProduct.setFieldValue("image", state?.image)
-
         setProductId(state?.id)
     }, [state])
 
@@ -153,6 +152,7 @@ export default function EditProductPage() {
                 warranty: "",
                 dummyPrice: "",
                 thumbnail: "",
+                isActive: isActive
             },
 
             validationSchema: Yup.object().shape({
@@ -198,6 +198,7 @@ export default function EditProductPage() {
             onSubmit: async (values: any) => {
                 values.id = ProductId;
                 values.stock = Number(values.stock);
+                values.isActive = isActive;
                 const response: any = await EditProduct(values);
                 const { message, statusCode } = response?.data;
                 if (statusCode === 200) {
@@ -444,6 +445,17 @@ export default function EditProductPage() {
                             <TextFields
                                 helperText={AddProduct.touched.warranty && AddProduct.errors.warranty} onChange={AddProduct.handleChange} value={AddProduct.values.warranty} autoComplete={'off'} placeholder={STRING.PRODUCT_WARRANTY_PLACHOLDER}
                                 name={"warranty"} className={'productField'} />
+                        </div>
+
+                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
+                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
+                                <Typography component='span' className='!font-bold'>
+                                    {STRING.PRODUCT_ACTIVE}
+                                </Typography>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", marginTop: "0.5rem", width: "100%" }}>
+                                <Switchs isActive={isActive} setIsActive={setIsActive} />
+                            </div>
                         </div>
                     </div>
                 </Paper>

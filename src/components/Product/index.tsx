@@ -77,7 +77,8 @@ export default function ProductPage() {
         description: any,
         categorys: any,
         brands: any,
-        defaultcategory: any
+        defaultcategory: any,
+        isActive: any
     ): any {
         return {
             id: id,
@@ -95,7 +96,8 @@ export default function ProductPage() {
             description: description,
             categorys: categorys,
             brands: brands,
-            defaultcategory: defaultcategory
+            defaultcategory: defaultcategory,
+            isActive: isActive
         };
     }
 
@@ -125,7 +127,8 @@ export default function ProductPage() {
                 item.description,
                 item.category,
                 brands,
-                defaultcategory
+                defaultcategory,
+                item.isActive
             );
         });
         setRows(rowise)

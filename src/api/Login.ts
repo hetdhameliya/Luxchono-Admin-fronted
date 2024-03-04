@@ -33,10 +33,8 @@ export const LoginApi = createApi({
                 body,
             }),
         }),
-
         ResetPassword: builder.mutation({
             query: ({ id, newPassword }: any) => ({
-
                 url: `/reset-password?id=${id || "-"}`,
                 method: 'post',
                 body: { newPassword },

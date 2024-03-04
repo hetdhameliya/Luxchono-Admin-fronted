@@ -126,6 +126,7 @@ export const STRING = {
   PRODUCT_THUMNAIL_FORMAT: "You can only upload photo in PNG format",
   PRODUCT_MAXIMU_IMAGE: "Upload maximu 4 images",
   PRODUCT_EDIT: "Edit Product",
+  PRODUCT_ACTIVE: "Active :-",
   //order
   ORDER__SEARCH_PLACHOLDER: "Search Order",
   ORDER_DELETE_DESC: "You want to Delete Selected Order?",

@@ -7,6 +7,8 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import dayjs from 'dayjs';
 import { handleStatusesBadge } from '../customBadge';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const ProductRow = ({ row, index, handleDeleteOpen }: any) => {
 
@@ -23,7 +25,9 @@ export const ProductRow = ({ row, index, handleDeleteOpen }: any) => {
                 padding="none">
                 <div className='flex gap-[10px] items-center '>
                     <Avatar className='!h-[35px] !w-[35px] !rounded-[10px] !border-header  border-[1px]' alt="p" src={`${row?.thumbnail}`} />
-                    {row?.name}
+                    <div>
+                        {row?.name} {row?.isActive ? (<CheckIcon style={{ color: "green", fontSize: "13px" }} />) : (<CloseIcon style={{ color: "red", fontSize: "15px" }} />)}
+                    </div>
                 </div>
             </TableCell>
             <TableCell width={"13%"} align="left" padding="none">{`${row.category}`}</TableCell>
