@@ -1,6 +1,9 @@
 import { Box, Tab, Tabs } from '@mui/material'
 import React from 'react'
 import ChangePassword from './ChangePassword';
+import VerifiedAdmin from './VerifiedAdmin';
+import ShowAdmin from './ShowAdmin';
+import Details from './Details';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -32,7 +35,7 @@ function a11yProps(index: number) {
 }
 export default function ProfilePage() {
 
-    const [value, setValue] = React.useState(1);
+    const [value, setValue] = React.useState(2);
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
@@ -52,7 +55,6 @@ export default function ProfilePage() {
                 sx={{
                     borderRight: 1,
                     borderColor: "divider",
-                    minWidth: "100px !important"
                 }}>
                 <Tab
                     label={"Details"}
@@ -65,24 +67,27 @@ export default function ProfilePage() {
                     style={{ fontWeight: "600" }}
                 />
                 <Tab
-                    label={"Show All Admin"}
+                    label={" Manage All Admin"}
                     {...a11yProps(0)}
                     style={{ fontWeight: "600" }}
                 />
                 <Tab
-                    label={"Manage All Admin"}
+                    label={"Show All Admin"}
                     {...a11yProps(0)}
                     style={{ fontWeight: "600" }}
                 />
             </Tabs>
             <TabPanel value={value} index={0}>
+                <Details />
             </TabPanel>
             <TabPanel value={value} index={1} >
                 <ChangePassword />
             </TabPanel>
             <TabPanel value={value} index={2}>
+                <VerifiedAdmin />
             </TabPanel>
             <TabPanel value={value} index={3} width="85%">
+                <ShowAdmin />
             </TabPanel>
         </Box>
     )

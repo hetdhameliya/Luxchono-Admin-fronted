@@ -9,22 +9,10 @@
     align-items: center;
     gap: 20px;
 
-
     .navbar_heading {
         color: #E9CC97;
         font-size: 30px;
     }
-
-}
-
-.main_div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh !important;
-    flex-direction: column;
-    gap: 5px;
-
 }
 
 .verify_icon {
@@ -33,19 +21,19 @@
 }
 
 .div_label {
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .verifybtton {
     color: $white !important;
-    margin-top: 2rem !important;
+    margin-top: 1rem !important;
     height: 2.9rem;
     font-weight: 700 !important;
     text-transform: capitalize !important;
     font-size: 1rem !important;
     border-radius: 12px !important;
     width: 16rem;
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 
 

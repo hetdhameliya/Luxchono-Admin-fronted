@@ -49,12 +49,19 @@ export const LoginApi = createApi({
                 body,
             }),
         }),
+        GetAllAdmin: builder.query({
+            query: () => {
+                return {
+                    url: "/admin/get-all-admin",
+                };
+            },
+        }),
     }),
 
 
 });
 
-export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation ,useChangePasswordMutation} = LoginApi;
+export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation, useChangePasswordMutation,useGetAllAdminQuery } = LoginApi;
 
 
 

@@ -9,6 +9,8 @@ import dayjs from 'dayjs';
 import { handleStatusesBadge } from '../customBadge';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 export const ProductRow = ({ row, index, handleDeleteOpen }: any) => {
 
@@ -235,6 +237,20 @@ export const OfferRow = ({ row, index, handleDeleteOpen }: any) => {
                     <DeleteOutlineOutlinedIcon className='text-black' onClick={() => handleDeleteOpen(row)} />
                 </div>
             </TableCell>
+        </>
+    )
+}
+
+
+export const AdminRow = ({ row, index, }: any) => {
+
+    return (
+        <>
+            <TableCell align="left" padding="none">{row.username || "-"}</TableCell>
+            <TableCell align="left" padding="none">{row.email || "-"}</TableCell>
+            <TableCell align="left" padding="none">
+                {row.isAdminVerified ? <CheckOutlinedIcon style={{ color: "green" }} /> :
+                    <CloseOutlinedIcon style={{ color: "red" }} />}</TableCell>
         </>
     )
 }

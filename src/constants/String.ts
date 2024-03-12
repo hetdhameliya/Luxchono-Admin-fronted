@@ -183,4 +183,7 @@ export const STRING = {
   STOCK: "Stock range",
   RESET: "Reset",
   APPLAY: "Apply",
+
+  //profile 
+  VERIFY_ADMIB : "Are You Sure You Want To Verify This Admin?"
 };

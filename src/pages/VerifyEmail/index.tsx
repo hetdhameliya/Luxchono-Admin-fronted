@@ -28,16 +28,24 @@ export default function VerifyEmail() {
                     <span className='navbar_heading'> {STRING.LUXCHONO}</span>
                 </div>
             </div>
-            <div className='main_div'>
-                {isFetching ? (<Loader />) : (
+            <div >
+                {isFetching ? (
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "80vh" }}>
+                        <Loader />
+                    </div>
+
+                ) : (
                     <>
-                        <div>
-                            <TaskAltIcon className='verify_icon' />
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", height: "80vh" }}>
+                            <div >
+                                <TaskAltIcon className='verify_icon' />
+                            </div>
+                            <span className='div_label'>
+                                {data?.message}
+                            </span>
+                            <Buttons onClick={Login} type={"submit"} text={STRING.NOW_GOTO_LOGIN} variant={"contained"} className={"verifybtton"} />
                         </div>
-                        <span className='div_label'>
-                            {data?.message}
-                        </span>
-                        <Buttons onClick={Login} type={"submit"} text={STRING.NOW_GOTO_LOGIN} variant={"contained"} className={"verifybtton"} />
+
                     </>
                 )
                 }

@@ -57,13 +57,14 @@
 
     .addbtn {
         background-color: $primary !important;
-        
+
     }
 
     .addcustomerbtn {
         background-color: $primary !important;
         width: 154px !important;
     }
+
     .prices {
         display: flex;
         justify-content: space-between;
@@ -103,8 +104,8 @@
         margin: 0;
     }
 
-    .textareas{
-        .MuiTextField-root{
+    .textareas {
+        .MuiTextField-root {
             width: 100% !important;
         }
     }
