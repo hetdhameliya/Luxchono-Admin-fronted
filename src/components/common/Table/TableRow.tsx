@@ -211,35 +211,6 @@ export const CustomerRow = ({ row, index }: any) => {
     )
 }
 
-export const OfferRow = ({ row, index, handleDeleteOpen }: any) => {
-    const navigate = useNavigate();
-    const labelId = `enhanced-table-checkbox-${index}`;
-    return (
-        <>
-            <TableCell
-                align="left"
-                component="th"
-                id={labelId}
-                scope="row"
-                padding="none">
-                <div className='flex gap-[10px] items-center'>
-                    <Avatar className='!h-[35px] !w-[35px] !rounded-[10px] !border-header  border-[1px]' alt="p" src={`${BASE_URL}/${row?.image}`} />
-                    {row?.offerName || "-"}
-                </div>
-            </TableCell>
-            <TableCell width={"40%"} align="left" padding="none">
-                {row.discountType === "percentage" ? `${row.discount} %` : row.discountType === "cash" ? `${row.discount} ₹` : "-"}
-            </TableCell>
-            <TableCell width={"6%"} align="left" padding="none">
-                <div className='flex gap-[5px]'>
-                    <EditOutlinedIcon className='text-black' onClick={() => navigate("/editoffer", { state: row })} />
-                    <RemoveRedEyeOutlinedIcon className='text-black !text-[22px]' onClick={() => navigate("/viewoffer", { state: row })} />
-                    <DeleteOutlineOutlinedIcon className='text-black' onClick={() => handleDeleteOpen(row)} />
-                </div>
-            </TableCell>
-        </>
-    )
-}
 
 
 export const AdminRow = ({ row, index, }: any) => {
@@ -251,6 +222,38 @@ export const AdminRow = ({ row, index, }: any) => {
             <TableCell align="left" padding="none">
                 {row.isAdminVerified ? <CheckOutlinedIcon style={{ color: "green" }} /> :
                     <CloseOutlinedIcon style={{ color: "red" }} />}</TableCell>
+        </>
+    )
+}
+
+export const OfferRow = ({ row, index, handleDeleteOpen }: any) => {
+    const navigate = useNavigate();
+    const labelId = `enhanced-table-checkbox-${index}`;
+
+    console.log(row, "offerofferoffer")
+    return (
+        <>
+            <TableCell
+                align="left"
+                component="th"
+                id={labelId}
+                scope="row"
+                padding="none">
+                <div className='flex gap-[10px] items-center'>
+                    <Avatar className='!h-[35px] !w-[35px] !rounded-[10px] !border-header  border-[1px]' alt="p" src={row?.image} />
+                    {row?.name || "-"}
+                </div>
+            </TableCell>
+            <TableCell width={"40%"} align="left" padding="none">
+                {row?.offer}
+            </TableCell>
+            <TableCell width={"6%"} align="left" padding="none">
+                <div className='flex gap-[5px]'>
+                    <EditOutlinedIcon className='text-black' onClick={() => navigate("/editoffer", { state: row })} />
+                    <RemoveRedEyeOutlinedIcon className='text-black !text-[22px]' onClick={() => navigate("/viewoffer", { state: row })} />
+                    <DeleteOutlineOutlinedIcon className='text-black' onClick={() => handleDeleteOpen(row)} />
+                </div>
+            </TableCell>
         </>
     )
 }

@@ -2,6 +2,7 @@ import { Box, CssBaseline } from "@mui/material";
 import AppBars from "../../components/common/AppBar";
 import { DrawerHeader, Main } from "../../components/common/PageComonComponent/index";
 import Drawers from "../../components/common/Drawer";
+import OfferPage from "../../components/Offer";
 
 
 export default function Offer() {
@@ -12,6 +13,7 @@ export default function Offer() {
       <Drawers />
       <Main open={true}>
         <DrawerHeader />
+        <OfferPage />
       </Main>
     </Box>
   )

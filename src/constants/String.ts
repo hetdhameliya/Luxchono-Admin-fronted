@@ -48,6 +48,10 @@ export const STRING = {
   DIALOG_TITAL: "Confirm Logout",
   DIALOG_DESC: "Are you sure you want to Logout?",
 
+  CLEAR: "CLEAR",
+  DATE_CANCEL: "Cancel",
+  DONE: "Done",
+
   // product
   PRODUCT_NODATA_AVAILABLE: "No data available",
   PRODUCT_SEARCH_PLACHOLDER: "Search Product",

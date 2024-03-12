@@ -21,6 +21,9 @@ import EditCategory from '../pages/Category/EditCategory';
 import ForgotPassword from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
 import Profile from '../pages/Profile';
+import AddOffer from '../pages/Offer/AddOfferPage';
+import EditOffer from '../pages/Offer/EditOfferPage';
+import ViewOffer from '../pages/Offer/viewOfferPage';
 
 export default function Router() {
   return (
@@ -46,6 +49,9 @@ export default function Router() {
           <Route path="/addcategory" element={<AddCategory />}></Route>
           <Route path="/editcategory" element={<EditCategory />}></Route>
           <Route path="/offer" element={<Offer />}></Route>
+          <Route path='/addoffer' element={<AddOffer />} />
+          <Route path='/editoffer' element={<EditOffer />} />
+          <Route path='/viewoffer' element={<ViewOffer />} />
           <Route path="/customer" element={<Customer />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="*" element={<Navigate to="/login" />} />

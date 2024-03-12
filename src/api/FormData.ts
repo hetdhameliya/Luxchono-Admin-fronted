@@ -15,12 +15,11 @@ export const brandFromDataApi = {
     formData.append("image", body.image);
     formData.append("icon", body.icon);
     return formData;
-  }
-}
+  },
+};
 
 export const productFromDatApi = {
   createProduct: (body: any) => {
-
     const formData = new FormData();
 
     if (Array.isArray(body.category)) {
@@ -47,41 +46,24 @@ export const productFromDatApi = {
     formData.append("price", body.price);
     formData.append("productModel", body.productModel);
     formData.append("warranty", body.warranty);
-    formData.append("thumbnail", body.thumbnail)
-    formData.append("isActive", body.isActive)
+    formData.append("thumbnail", body.thumbnail);
+    formData.append("isActive", body.isActive);
     return formData;
-  }
+  },
 };
 
 export const OfferFromDataApi = {
   createOffer: (body: any) => {
     const formData = new FormData();
 
-    if (Array.isArray(body.brands)) {
-      body.brands.forEach((BrandItem: any, index: any) => {
-        formData.append(`brands[${index}]`, BrandItem);
-      });
-    } else {
-      formData.append("brands", body.brands);
-    }
-
-    if (Array.isArray(body.products)) {
-      body.products.forEach((ProductItem: any, index: any) => {
-        formData.append(`products[${index}]`, ProductItem);
-      });
-    } else {
-      formData.append("products", body.products);
-    }
-
     formData.append("image", body.image);
-    formData.append("offerName", body.offerName);
-    formData.append("offerCode", body.offerCode);
+    formData.append("name", body.name);
+    formData.append("percentage", body.percentage);
     formData.append("description", body.description);
-    formData.append("discount", body.discount);
-    formData.append("dateFrom", body.dateFrom)
-    formData.append("dateTo", body.dateTo)
-    formData.append("discountType", body.discountType);
+    formData.append("startDate", body.startDate);
+    formData.append("endDate", body.endDate);
+    formData.append("product", body.product);
 
     return formData;
   },
-}
+};
