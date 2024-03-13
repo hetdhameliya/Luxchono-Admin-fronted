@@ -24,6 +24,8 @@ export default function ViewOfferPage() {
             key: 'selection',
         },
     ]);
+
+    console.log(state, "statestate")
     return (
         <>
             <div className='flex gap-[15px] items-center mt-[1rem] add_category'>
@@ -34,7 +36,7 @@ export default function ViewOfferPage() {
                     {STRING.OFFER_VIEW}
                 </Typography>
             </div>
-            <form className='add_product'>
+            <form className='add_offer'>
                 <Paper className='mt-[1.5rem] paperboxshadow p-[1rem]'>
                     <div className='flex !flex-col mt-[1rem] pl-[3rem] pr-[3rem] '>
                         <div className='flex item-center !gap-[15px] mt-[1rem]'>
@@ -45,7 +47,7 @@ export default function ViewOfferPage() {
                             </div>
                             <div className='flex-col'>
                                 <Avatar
-                                    src={`${BASE_URL}/${state?.image}`}
+                                    src={`${state?.image}`}
                                     className='!w-[120px] !h-[120px] !cursor-pointer !rounded-[10px] !bg-white  border-[1px] !border-header'
                                     alt='Image Preview'>
                                 </Avatar>
@@ -57,9 +59,10 @@ export default function ViewOfferPage() {
                                     {STRING.OFFER_NAME}
                                 </Typography>
                             </div>
-                            <TextFields value={state?.offerName} placeholder={STRING.OFFER_NAME_PLACHOLDER}
-                                name={'offerName'} className={'productField'} />
+                            <TextFields value={state?.name} placeholder={STRING.OFFER_NAME_PLACHOLDER}
+                                name={'name'} className={'productField'} />
                         </div>
+
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
@@ -73,22 +76,13 @@ export default function ViewOfferPage() {
                                     wrapperRef={wrapperRef}
                                     showDateRangePicker={false}
                                     setShowDateRangePicker={() => { }}
-                                    fromDate={state?.dateFrom}
-                                    toDate={state?.dateTo} />
+                                    fromDate={state?.startDate}
+                                    toDate={state?.endDate} />
                             </div>
                         </div>
-                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_BRANDS}
-                                </Typography>
-                            </div>
-                            <div className='flex-col w-[100%]'>
-                                <Selects isDisabled={true}
-                                    selectedValues={state?.defaultBrands}
-                                    placeholder={STRING.OFFER_BRANDS_PLACHOLDER} height={'45px'} isMulti={true} />
-                            </div>
-                        </div>
+
+
+
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
@@ -98,20 +92,11 @@ export default function ViewOfferPage() {
                             <div className='flex-col w-[100%]'>
                                 <Selects isDisabled={true}
                                     selectedValues={state?.defaultProducts}
-                                    placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} isMulti={true} />
+                                    placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} />
                             </div>
                         </div>
-                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_CODE}
-                                </Typography>
-                            </div>
-                            <TextFields
-                                value={state?.offerCode}
-                                placeholder={STRING.OFFER_OFFERCODE_PLACHOLDER}
-                                name={'offerCode'} className={'productField'} />
-                        </div>
+
+
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
@@ -119,24 +104,12 @@ export default function ViewOfferPage() {
                                 </Typography>
                             </div>
                             <TextFields
-                                value={state?.discount}
+                                value={state?.offer}
                                 type={'number'}
                                 autoComplete={'off'} placeholder={STRING.OFFER_DISCOUNT_PLACHOLDER}
-                                name={'discount'} className={'productField'} />
+                                name={'offer'} className={'productField'} />
                         </div>
-                        <div className='!flex !item-center !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_DISCOUNT_TYPE}
-                                </Typography>
-                            </div>
-                            <div className='flex-col w-[100%]'>
-                                <Selects isDisabled={true}
-                                    selectedValues={{ label: state?.discountType, value: state?.discountType }}
-                                    placeholder={STRING.OFFER_DISCOUNTTYPE_PLACHOLDER}
-                                    height={'45px'} />
-                            </div>
-                        </div>
+
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
@@ -145,7 +118,7 @@ export default function ViewOfferPage() {
                             </div>
                             <Textareas
                                 value={state?.description}
-                                name={'description'}  rows={3} placeholder={STRING.OFFER_DESCRIPTION_PLACHOLDER} />
+                                name={'description'} rows={3} placeholder={STRING.OFFER_DESCRIPTION_PLACHOLDER} />
                         </div>
                         <div>
                         </div>

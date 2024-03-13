@@ -9,9 +9,8 @@ export const exportToCsv = (rows: any[] | null, columns: any[], fileName: string
     const { discountType, ...updatedRow } = row;
     return {
       ...updatedRow,
-      discount: row.discountType === 'percentage'
-        ? `${row.discount} %`
-        : `${row.discount} ₹`,
+      offer:`${row.offer} %`,
+       
       createdAt: dayjs(row.createdAt).format('MMM - DD - YYYY [at] hh:mm A'),
     };
   });

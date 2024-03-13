@@ -23,15 +23,13 @@ import ReactDateRangePicker from '../../common/DateRangePicker';
 export default function EditOfferPage() {
     const location = useLocation();
     const { state } = location;
-    const { data: BrandData } = useGetAllBrandApiQuery({});
-    const { data: ProductData } = useGetAllProductQuery({});
+    const { data: ProductData } = useGetAllProductQuery({
+        search: "", category: "", brands: "", startPrice: "", endPrice: "", startStockRange: "", endStockRange: ""
+    });
     const [EditProduct, { isLoading }] = useEditOfferMutation();
     const navigate = useNavigate();
-    const [filteredBrand, setFilteredBrand] = useState<any[]>([]);
-    const [selectedBrandValues, setSelectedBrandValues] = useState<any[]>([]);
     const [filteredProduct, setFilteredProduct] = useState<any[]>([]);
     const [selectedProductValues, setSelectedProductValues] = useState<any[]>([]);
-    const [selectedDiscountTypeValues, setSelectedDiscountTypeValues] = useState<any>();
     const [OfferId, setOfferId] = useState();
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
@@ -42,64 +40,49 @@ export default function EditOfferPage() {
         navigate('/offer');
     };
 
+    console.log(state, "statestate")
+
     useEffect(() => {
-        AddOffer.setFieldValue('offerName', state?.offerName);
-        AddOffer.setFieldValue('offerCode', state?.offerCode);
+        AddOffer.setFieldValue('name', state?.name);
         AddOffer.setFieldValue('description', state?.description);
-        AddOffer.setFieldValue('discount', state?.discount);
-        setFromDate(state?.dateFrom);
-        setToDate(state?.dateTo);
+        AddOffer.setFieldValue('percentage', state?.offer);
+        setFromDate(state?.startDate);
+        setToDate(state?.endDate);
         setOfferImage(state?.image);
         setOfferId(state?.id);
         AddOffer.setFieldValue('image', state?.image);
-        setSelectedDiscountTypeValues({ label: state?.discountType, value: state?.discountType });
-        setSelectedBrandValues(state?.defaultBrands);
         setSelectedProductValues(state?.defaultProducts);
     }, [state]);
 
+    console.log(ProductData, "ProductDataProductData")
+
     //product api
     useEffect(() => {
-        const filterProducts = ProductData?.result?.data && (ProductData?.result?.data as any[]).map((product: any) => ({
-            label: product.productName,
+        const filterProducts = ProductData?.data && (ProductData?.data as any[]).map((product: any) => ({
+            label: product.name,
             value: product._id
         }));
         setFilteredProduct(filterProducts);
-        const ProductValues = selectedProductValues?.map(product => product.value);
-        AddOffer.setFieldValue('products', ProductValues);
+        const ProductValues = (selectedProductValues as any)?.value;
+        AddOffer.setFieldValue('product', ProductValues);
     }, [ProductData, selectedProductValues]);
 
     //brand api 
-    useEffect(() => {
-        const filterBrands = BrandData?.result?.data && (BrandData?.result?.data as any[]).map((brand: any) => ({
-            label: brand.brandName,
-            value: brand._id
-        }));
-        setFilteredBrand(filterBrands);
-        const BrandValues = selectedBrandValues?.map(brand => brand.value);
-        AddOffer.setFieldValue('brands', BrandValues);
-    }, [BrandData, selectedBrandValues]);
-
     //form data
     const AddOffer = useFormik({
         initialValues: {
             image: '',
-            offerName: '',
-            offerCode: '',
+            name: '',
             description: '',
-            discount: '',
-            discountType: '',
-            dateFrom: '',
-            dateTo: '',
-            brands: [],
-            products: []
+            percentage: '',
+            startDate: '',
+            endDate: '',
+            product: ""
         },
         validationSchema: Yup.object().shape({
-            offerName: Yup.string().trim().required(STRING.OFFER_OFFERNAME_REQUIRED).min(3, STRING.OFFER_OFFERNAME_FORMATE),
-            discountType: Yup.string().required(STRING.OFFER_DISCOUNTTYPE_REQUIRED),
-            offerCode: Yup.string().trim().required(STRING.OFFER_OFFERCODE_REQUIRED),
-            discount: Yup.string().trim().required(STRING.OFFER_DISOUNT_REQUIRED),
-            brands: Yup.array().min(1, STRING.OFFER_BRANDS_REQUIRED),
-            products: Yup.array().min(1, STRING.OFFER_PRODUCTS_REQUIRED),
+            name: Yup.string().trim().required(STRING.OFFER_OFFERNAME_REQUIRED).min(3, STRING.OFFER_OFFERNAME_FORMATE),
+            percentage: Yup.string().trim().required(STRING.OFFER_DISOUNT_REQUIRED),
+            product: Yup.string().required(STRING.OFFER_PRODUCTS_REQUIRED),
             image: Yup.mixed().required(STRING.OFFER_IMAGE_REQUIRED).test('fileFormat', STRING.IMAGE_FORMATES, (value: any) => {
                 if (value) {
                     const acceptedFormats = ['image/svg+xml', 'image/png', 'image/jpeg', 'image/jpg'].includes(value.type);
@@ -154,19 +137,17 @@ export default function EditOfferPage() {
     const [prevDate, setPrevDate] = useState(states);
     const [showDateRangePicker, setShowDateRangePicker] = useState(false);
 
-    //date and discount type
-    useEffect(() => {
-        AddOffer.setFieldValue('discountType', selectedDiscountTypeValues?.value);
-    }, [selectedDiscountTypeValues]);
+    //date and percentage type
+
 
     useEffect(() => {
-        AddOffer.setFieldValue('dateFrom', fromDate);
-        AddOffer.setFieldValue('dateTo', toDate);
+        AddOffer.setFieldValue('startDate', fromDate);
+        AddOffer.setFieldValue('endDate', toDate);
     }, [fromDate, toDate]);
 
     useEffect(() => {
-        AddOffer.setFieldValue('dateFrom', fromDate);
-        AddOffer.setFieldValue('dateTo', toDate);
+        AddOffer.setFieldValue('startDate', fromDate);
+        AddOffer.setFieldValue('endDate', toDate);
     }, [fromDate, toDate]);
 
     return (
@@ -179,7 +160,7 @@ export default function EditOfferPage() {
                     {STRING.OFFER_EDIT}
                 </Typography>
             </div>
-            <form onSubmit={AddOffer.handleSubmit} className='add_product'>
+            <form onSubmit={AddOffer.handleSubmit} className='add_offer'>
                 <Paper className='mt-[1.5rem] paperboxshadow p-[1rem]'>
                     <div className='flex justify-end'>
                         {isLoading ? (<Loader />) : (<Buttons type={'submit'} className={'category_add_button'} startIcon={<BookmarkIcon />} variant={'contained'} text={STRING.SAVE} />)}
@@ -201,7 +182,7 @@ export default function EditOfferPage() {
                                 style={{ display: 'none' }} />
                             <div className='flex-col'>
                                 <Avatar
-                                    src={imagePreview === null ? `${BASE_URL}/${OfferImage}` : `${imagePreview}`}
+                                    src={imagePreview === null ? `${OfferImage}` : `${imagePreview}`}
                                     onClick={AddOfferImg}
                                     className='!w-[120px] !h-[120px] !cursor-pointer !rounded-[10px] !bg-white  border-[1px] !border-header'
                                     alt='Image Preview'>
@@ -223,8 +204,8 @@ export default function EditOfferPage() {
                                 </Typography>
                             </div>
                             <TextFields
-                                helperText={AddOffer.touched.offerName && AddOffer.errors.offerName} onChange={AddOffer.handleChange} value={AddOffer.values.offerName} autoComplete={'off'} placeholder={STRING.OFFER_NAME_PLACHOLDER}
-                                name={'offerName'} className={'productField'} />
+                                helperText={AddOffer.touched.name && AddOffer.errors.name} onChange={AddOffer.handleChange} value={AddOffer.values.name} autoComplete={'off'} placeholder={STRING.OFFER_NAME_PLACHOLDER}
+                                name={'name'} className={'productField'} />
                         </div>
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
@@ -253,21 +234,7 @@ export default function EditOfferPage() {
                                 )}
                             </div>
                         </div>
-                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_BRANDS}
-                                </Typography>
-                            </div>
-                            <div className='flex-col w-[100%]'>
-                                <Selects options={filteredBrand} selectedValues={selectedBrandValues} setSelectedValues={setSelectedBrandValues} placeholder={STRING.OFFER_BRANDS_PLACHOLDER} height={'45px'} isMulti={true} />
-                                {AddOffer.touched.brands && AddOffer.errors.brands && (
-                                    <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
-                                        {AddOffer.errors.brands.toString()}
-                                    </Typography>
-                                )}
-                            </div>
-                        </div>
+
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>
@@ -275,23 +242,13 @@ export default function EditOfferPage() {
                                 </Typography>
                             </div>
                             <div className='flex-col w-[100%]'>
-                                <Selects options={filteredProduct} selectedValues={selectedProductValues} setSelectedValues={setSelectedProductValues} placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} isMulti={true} />
-                                {AddOffer.touched.products && AddOffer.errors.products && (
+                                <Selects options={filteredProduct} selectedValues={selectedProductValues} setSelectedValues={setSelectedProductValues} placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} />
+                                {(AddOffer.submitCount > 0 && AddOffer.errors.product) && (
                                     <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
-                                        {AddOffer.errors.products.toString()}
+                                        {AddOffer.errors.product.toString()}
                                     </Typography>
                                 )}
                             </div>
-                        </div>
-                        <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_CODE}
-                                </Typography>
-                            </div>
-                            <TextFields
-                                helperText={AddOffer.touched.offerCode && AddOffer.errors.offerCode} onChange={AddOffer.handleChange} value={AddOffer.values.offerCode} autoComplete={'off'} placeholder={STRING.OFFER_OFFERCODE_PLACHOLDER}
-                                name={'offerCode'} className={'productField'} />
                         </div>
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
@@ -300,30 +257,10 @@ export default function EditOfferPage() {
                                 </Typography>
                             </div>
                             <TextFields
-                                helperText={AddOffer.touched.discount && AddOffer.errors.discount} onChange={AddOffer.handleChange} value={AddOffer.values.discount} type={'number'} autoComplete={'off'} placeholder={STRING.OFFER_DISCOUNT_PLACHOLDER}
-                                name={'discount'} className={'productField'} />
+                                helperText={AddOffer.touched.percentage && AddOffer.errors.percentage} onChange={AddOffer.handleChange} value={AddOffer.values.percentage} type={'number'} autoComplete={'off'} placeholder={STRING.OFFER_DISCOUNT_PLACHOLDER}
+                                name={'percentage'} className={'productField'} />
                         </div>
-                        <div className='!flex !item-center !gap-[15px] mt-[1rem]'>
-                            <div className='w-[12rem] flex justify-end mt-[0.5rem]'>
-                                <Typography component='span' className='!font-bold'>
-                                    {STRING.OFFER_DISCOUNT_TYPE}
-                                </Typography>
-                            </div>
-                            <div className='flex-col w-[100%]'>
-                                <Selects
-                                    options={Discount}
-                                    selectedValues={selectedDiscountTypeValues}
-                                    setSelectedValues={setSelectedDiscountTypeValues}
-                                    placeholder={STRING.OFFER_DISCOUNTTYPE_PLACHOLDER}
-                                    height={'45px'} />
 
-                                {(AddOffer.submitCount > 0 && AddOffer.errors.discountType) && (
-                                    <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
-                                        {AddOffer.errors.discountType.toString()}
-                                    </Typography>
-                                )}
-                            </div>
-                        </div>
                         <div className='!flex !item-center  !gap-[15px] mt-[1rem]'>
                             <div className='w-[12rem] flex justify-end  mt-[0.5rem]'>
                                 <Typography component='span' className='!font-bold'>

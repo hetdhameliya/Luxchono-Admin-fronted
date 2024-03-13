@@ -234,6 +234,7 @@ export const OfferRow = ({ row, index, handleDeleteOpen }: any) => {
     return (
         <>
             <TableCell
+                width={"50%"}
                 align="left"
                 component="th"
                 id={labelId}
@@ -244,10 +245,13 @@ export const OfferRow = ({ row, index, handleDeleteOpen }: any) => {
                     {row?.name || "-"}
                 </div>
             </TableCell>
-            <TableCell width={"40%"} align="left" padding="none">
+            <TableCell width={"10%"} align="left" padding="none">
                 {row?.offer}
             </TableCell>
-            <TableCell width={"6%"} align="left" padding="none">
+            <TableCell width={"30%"} align="left" padding="none">
+                {row?.productName}
+            </TableCell>
+            <TableCell width={"10%"} align="left" padding="none">
                 <div className='flex gap-[5px]'>
                     <EditOutlinedIcon className='text-black' onClick={() => navigate("/editoffer", { state: row })} />
                     <RemoveRedEyeOutlinedIcon className='text-black !text-[22px]' onClick={() => navigate("/viewoffer", { state: row })} />

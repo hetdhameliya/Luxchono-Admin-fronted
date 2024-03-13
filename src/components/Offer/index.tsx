@@ -59,6 +59,12 @@ export default function OfferPage() {
             label: 'Discount',
         },
         {
+            id: 'productName',
+            numeric: true,
+            disablePadding: false,
+            label: 'Product Name',
+        },
+        {
             id: 'action',
             numeric: true,
             disablePadding: false,
@@ -75,7 +81,8 @@ export default function OfferPage() {
         products: any,
         startDate: any,
         endDate: any,
-        defaultProducts: any
+        defaultProducts: any,
+        productName: any
 
     ): any {
         return {
@@ -87,7 +94,8 @@ export default function OfferPage() {
             products: products,
             startDate: startDate,
             endDate: endDate,
-            defaultProducts: defaultProducts
+            defaultProducts: defaultProducts,
+            productName: productName
 
         };
     }
@@ -98,14 +106,9 @@ export default function OfferPage() {
         console.log(OfferDatas, "OfferDatasOfferDatas")
         const rowise = OfferDatas?.map((item: any) => {
 
-            // const defaultProducts = item?.product?.map((cat: any) => ({
-            //     label: cat.productName,
-            //     value: cat._id,
-            // }));
-
             const defaultProducts = {
-                label: item.name,
-                value: item._id,
+                label: item.product.name,
+                value: item.product._id,
             };
 
             console.log(item, "defaultProducts")
@@ -118,7 +121,9 @@ export default function OfferPage() {
                 item.product._id,
                 item.startDate,
                 item.endDate,
-                defaultProducts
+                defaultProducts,
+                item.product.name
+
             );
         });
         setRows(rowise)
@@ -177,9 +182,9 @@ export default function OfferPage() {
 
     const handleCvsExport = () => {
         const exportColumns = [
-            { id: 'offerName', label: 'Offer Name' },
-            { id: 'discount', label: 'Discount' },
-            { id: 'discountType' },
+            { id: 'name', label: 'Offer Name' },
+            { id: 'offer', label: 'Discount' },
+            { id: 'productName', label: 'product Name' },
         ];
         exportToCsv(rows, exportColumns, 'offer_data');
     }

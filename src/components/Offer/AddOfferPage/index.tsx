@@ -45,7 +45,7 @@ export default function AddOfferPage() {
             value: product._id
         }));
         setFilteredProduct(filterProducts);
-        const ProductValues = (selectedProductValues as any)?.value; // Explicitly cast to 'any'
+        const ProductValues = (selectedProductValues as any)?.value;
         AddOffer.setFieldValue('product', ProductValues);
     }, [ProductData, selectedProductValues]);
 
