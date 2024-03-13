@@ -22,9 +22,19 @@ export const OrdersApi = createApi({
             },
             providesTags: ["Orders"],
         }),
-       
-       
+
+        UpdateOrderStatus: builder.mutation({
+            query: (body) => {
+                return {
+                    url: `/admin/order/status-change`,
+                    method: 'PATCH',
+                    body
+                };
+            },
+            invalidatesTags: ['Orders'],
+        })
+
     }),
 });
 
-export const { useGetAllOrdersQuery } = OrdersApi;
+export const { useGetAllOrdersQuery,useUpdateOrderStatusMutation } = OrdersApi;

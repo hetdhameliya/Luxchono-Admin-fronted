@@ -56,12 +56,28 @@ export const LoginApi = createApi({
                 };
             },
         }),
+        AdminVerified: builder.mutation({
+            query: (id:any) => ({
+                url: `/admin/admin-verified/${id}`,
+                method: 'PATCH',
+                body: {
+                    isVerified: true
+                }
+            }),
+        }),
+        Profile: builder.query({
+            query: () => {
+                return {
+                    url: '/profile',
+                };
+            },
+        }),
     }),
 
 
 });
 
-export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation, useChangePasswordMutation,useGetAllAdminQuery } = LoginApi;
+export const { useLoginMutation, useRegisterMutation, useVerifyEmailQuery, useForgotPasswordMutation, useResetPasswordMutation, useChangePasswordMutation, useGetAllAdminQuery,useAdminVerifiedMutation,useProfileQuery } = LoginApi;
 
 
 

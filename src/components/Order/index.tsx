@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Selects from '../common/Selects';
 import { exportToCsv } from '../../constants/Helper/Csv';
-import { useGetAllOrdersQuery } from '../../api/Orders';
+import { useGetAllOrdersQuery, useUpdateOrderStatusMutation } from '../../api/Orders';
 import UpdateOrderStatusDialog from './UpdateOrderStatusDialog';
 
 
@@ -34,6 +34,8 @@ export default function OrderPage() {
 
     const [input, setinput] = useState("");
     const [openDeleteConfirmation, setDeleteOpenConfirmation] = useState(false);
+
+    const [UpdateOrderStatus, { isLoading: UpdateStatusLoading }] = useUpdateOrderStatusMutation();
 
     useEffect(() => {
         setRows([])
@@ -114,7 +116,8 @@ export default function OrderPage() {
         status: any,
         shippingAddress: any,
         products: any,
-        data: any
+        data: any,
+        id: any
 
 
     ): any {
@@ -126,7 +129,8 @@ export default function OrderPage() {
             status: status,
             shippingAddress: shippingAddress,
             products: products,
-            data: data
+            data: data,
+            id: id
         };
     }
 
@@ -135,6 +139,8 @@ export default function OrderPage() {
 
         setOrderData(OrderDatas)
         const rowise = OrderDatas?.map((item: any) => {
+
+            console.log(item, "itemitem")
             return createData(
                 item.orderId,
                 item.user.email,
@@ -143,7 +149,8 @@ export default function OrderPage() {
                 item.status,
                 item.address,
                 item.products,
-                item
+                item,
+                item?._id
             );
         });
         setRows(rowise)
@@ -187,6 +194,8 @@ export default function OrderPage() {
     const [optionValue, setOptionValue] = useState<any>("")
 
     const handleUpdateOpenConfirmation = (row: any) => {
+
+        console.log(row, "rowrow")
         setUpdateOpenConfirmationSingle(true);
         setUpdateSelectedId(row?.id);
         setSelectStatus({ label: row?.status, value: row?.status })
@@ -197,6 +206,25 @@ export default function OrderPage() {
         setSelectedIdSingle([])
         setSelectStatus("")
     };
+
+
+
+    const handleUpdateOrderStatus = async () => {
+        const body = {
+            orderId: UpdateselectedId,
+            status: selectStatus.value,
+        };
+
+        const response: any = await UpdateOrderStatus(body);
+        const { message, statusCode } = response?.data;
+        if (statusCode === 200) {
+            toast.success(message);
+        } else {
+            toast.error(message);
+        }
+        response && handleUpdateCloseConfirmations();
+    };
+
 
     return (
         <div className='productContainer'>
@@ -233,7 +261,7 @@ export default function OrderPage() {
 
 
             {/* update status */}
-            <UpdateOrderStatusDialog selectedValues={selectStatus} setSelectedValues={setSelectStatus} tital={"Update Order Status"} textClose={"Cancel"} textYes={"Edit"} yesClass={"dialog_yes"} closeClass={"dialog_cancel"} open={openUpdateConfirmationSingle} onClose={handleUpdateCloseConfirmations} optionValue={optionValue} />
+            <UpdateOrderStatusDialog loading={UpdateStatusLoading} selectedValues={selectStatus} setSelectedValues={setSelectStatus} tital={"Update Order Status"} textClose={"Cancel"} textYes={"Edit"} yesClass={"dialog_yes"} closeClass={"dialog_cancel"} open={openUpdateConfirmationSingle} onClose={handleUpdateCloseConfirmations} optionValue={optionValue} Action={handleUpdateOrderStatus} />
         </div>
     )
 }

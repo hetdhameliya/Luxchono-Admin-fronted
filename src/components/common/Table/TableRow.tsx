@@ -156,11 +156,11 @@ export const OrdersRow = ({ row, index, handleDeleteOpen, handleUpdateOpenConfir
                 <div>
                     <span
                         style={handleStatusesBadge(row?.status)}
-                    // onClick={() => {
-                    //     if (row?.status !== "Cancelled" && row?.status !== "Delivered") {
-                    //         handleUpdateOpenConfirmation(row);
-                    //     }
-                    // }}
+                        onClick={() => {
+
+                            handleUpdateOpenConfirmation(row);
+
+                        }}
                     >
                         {handleStatusesText(row?.status)}
                     </span>

@@ -52,7 +52,7 @@ export default function ChangePassword() {
     return (
 
         <div style={{ display: "flex", width: "100%", justifyContent: "center" }} >
-            <div className='main_div paperboxshadow' >
+            <div className='changemain_div paperboxshadow' >
                 <div >
                     <div className='main_heding'>
                         <span>{"Change Password"}</span>
