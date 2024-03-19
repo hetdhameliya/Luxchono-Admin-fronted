@@ -13,6 +13,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { REGEX } from '../../constants/Regex';
 interface ResetFormValues {
     password: string;
     confirmPassword: string;
@@ -33,7 +34,8 @@ export default function ResetPassword() {
             confirmPassword: '',
         },
         validationSchema: Yup.object().shape({
-            password: Yup.string().required(STRING.RESET_NEW_REQUIRED).min(6, STRING.RESET_NEW_FORMAT),
+            password: Yup.string().required(STRING.RESET_NEW_REQUIRED)
+            .matches(REGEX.STORAGE, STRING.PAASWORD_STORANGE),
             confirmPassword: Yup.string()
                 .required(STRING.RESET_CONFIRM_REQUIRED)
                 .oneOf([Yup.ref('password')], STRING.RESET_MATCH_FORMATE),

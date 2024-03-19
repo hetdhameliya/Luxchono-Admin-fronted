@@ -136,7 +136,7 @@ export default function OfferPage() {
 
 
     const handleDelete = async () => {
-        const response: any = await DeleteOffer({ ids: selectedDeleteRows })
+        const response: any = await DeleteOffer({ id: selectedDeleteRows })
         const { message, statusCode } = response?.data;
         if (statusCode === 200) {
             toast.success(message)
@@ -169,7 +169,7 @@ export default function OfferPage() {
     };
 
     const handleDeleteSingle = async () => {
-        const response: any = await DeleteOffer({ ids: selectedIdSingle })
+        const response: any = await DeleteOffer({ id: selectedIdSingle })
         const { message, statusCode } = response?.data;
         if (statusCode === 200) {
             toast.success(message)

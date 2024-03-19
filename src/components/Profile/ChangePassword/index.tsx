@@ -10,6 +10,7 @@ import Loader from '../../common/Loader';
 import { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { REGEX } from "../../../constants/Regex";
 
 export default function ChangePassword() {
 
@@ -30,8 +31,10 @@ export default function ChangePassword() {
             newPassword: '',
         },
         validationSchema: Yup.object().shape({
-            password: Yup.string().required("Password is required").min(6, STRING.LOGIN_PASSWORD_FORMAT),
-            newPassword: Yup.string().required("New Password is required").min(6, STRING.LOGIN_PASSWORD_FORMAT)
+            password: Yup.string().required("Password is required")
+                .matches(REGEX.STORAGE, STRING.PAASWORD_STORANGE),
+            newPassword: Yup.string().required("New Password is required")
+                .matches(REGEX.STORAGE, STRING.PAASWORD_STORANGE),
         }),
         onSubmit: async (values, { resetForm }) => {
             try {
@@ -65,7 +68,7 @@ export default function ChangePassword() {
                             <div className='filed_div'>
 
                                 <span>
-                                    {"Password"}
+                                    {"Current Password"}
                                 </span>
 
                                 <TextFields

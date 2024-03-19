@@ -242,7 +242,7 @@ export default function EditOfferPage() {
                                 </Typography>
                             </div>
                             <div className='flex-col w-[100%]'>
-                                <Selects options={filteredProduct} selectedValues={selectedProductValues} setSelectedValues={setSelectedProductValues} placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} />
+                                <Selects menuPlacement={"top"} options={filteredProduct} selectedValues={selectedProductValues} setSelectedValues={setSelectedProductValues} placeholder={STRING.OFFER_PRODUCTS_PLACHOLDER} height={'45px'} />
                                 {(AddOffer.submitCount > 0 && AddOffer.errors.product) && (
                                     <Typography variant='caption' className='!font-bold !ml-[1rem]' color='error'>
                                         {AddOffer.errors.product.toString()}

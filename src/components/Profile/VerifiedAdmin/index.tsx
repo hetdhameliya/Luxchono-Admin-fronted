@@ -50,6 +50,7 @@ export default function VerifiedAdmin() {
             const { message, statusCode } = response?.data;
             if (statusCode === 200) {
                 toast.success(message);
+                handleCloseConfirmation();
             } else {
                 toast.error(message);
             }

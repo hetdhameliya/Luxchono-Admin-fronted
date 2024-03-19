@@ -39,6 +39,10 @@ export const STRING = {
     "Please verify your account in mail with Invitation link",
   LUXCHONO: "Luxchono",
   FORGOT_PASSWORD_LINK: 'Forgot password?',
+  PAASWORD_STORANGE:
+    "Password must contain at least one digit, one lowercase character, and one uppercase character. Minimum length is 8 characters",
+  USER_NAME_STORANGE:
+    "Username must be 3-8 characters, alphanumeric, with at least 2 letters",
 
   NOW_GOTO_LOGIN: "Now go to Login",
   CHECK_MAIL_BOX: "Check your mail",

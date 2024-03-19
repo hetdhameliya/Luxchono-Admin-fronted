@@ -34,15 +34,17 @@ export default function Login() {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string().required(STRING.LOGIN_EMAIL_REQUIRED).matches(REGEX.EMAIL, STRING.LOGIN_EMAIL_FORMAT),
-            password: Yup.string().required(STRING.LOGIN_PASSWORD_REQUIRED).min(6, STRING.LOGIN_PASSWORD_FORMAT)
+            email: Yup.string().required(STRING.LOGIN_EMAIL_REQUIRED)
+                .matches(REGEX.EMAIL, STRING.LOGIN_EMAIL_FORMAT),
+            password: Yup.string().required(STRING.LOGIN_PASSWORD_REQUIRED)
+                .matches(REGEX.STORAGE, STRING.PAASWORD_STORANGE),
         }),
         onSubmit: async (values) => {
             try {
                 const response: any = await Login(values);
 
                 console.log(response, "responseee")
-                const { success, message, token,data } = response?.data;
+                const { success, message, token, data } = response?.data;
                 if (success) {
                     toast.success(message)
                     await localStorage.setItem("lw-token", token)

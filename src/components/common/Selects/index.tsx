@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem } from '@mui/material'
 import Select from 'react-select';
 import { ReactSelectStyle } from './ReactSelect';
-export default function Selects({ width, height, placeholder, options, selectedValues, setSelectedValues, isMulti,isDisabled }: any) {
+export default function Selects({ width, height, placeholder, options, selectedValues, setSelectedValues, isMulti,isDisabled ,menuPlacement }: any) {
 
     const handleSelectChange = (selectedOptions: any[]) => {
         setSelectedValues(selectedOptions);
@@ -20,7 +20,7 @@ export default function Selects({ width, height, placeholder, options, selectedV
                 isClearable={true}
                 styles={ReactSelectStyle(width, height)}
                 options={options}
-                menuPlacement="top" />
+                menuPlacement={menuPlacement || "bottom"} />
         </>
     )
 }

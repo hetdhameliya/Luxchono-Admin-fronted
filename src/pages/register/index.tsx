@@ -37,9 +37,12 @@ export default function Register() {
             username: ""
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string().required(STRING.LOGIN_EMAIL_REQUIRED).matches(REGEX.EMAIL, STRING.LOGIN_EMAIL_FORMAT),
-            password: Yup.string().required(STRING.LOGIN_PASSWORD_REQUIRED).min(6, STRING.LOGIN_PASSWORD_FORMAT),
-            username: Yup.string().required(STRING.REGISTER_USERNAME_REQUIRED).min(3, STRING.REGISTER_USERNAME_FORMATE),
+            email: Yup.string().required(STRING.LOGIN_EMAIL_REQUIRED)
+                .matches(REGEX.EMAIL, STRING.LOGIN_EMAIL_FORMAT),
+            password: Yup.string().required(STRING.LOGIN_PASSWORD_REQUIRED)
+                .matches(REGEX.STORAGE, STRING.PAASWORD_STORANGE),
+            username: Yup.string().required(STRING.REGISTER_USERNAME_REQUIRED)
+                .matches(REGEX.USERNAME, STRING.USER_NAME_STORANGE),
         }),
         onSubmit: async (values) => {
             try {

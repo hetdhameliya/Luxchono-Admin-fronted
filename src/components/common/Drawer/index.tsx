@@ -60,14 +60,14 @@ export default function Drawers() {
                         <img src={logo} alt="logo"></img>
                     </DrawerHeader>
                     <List className='!mt-[1rem] !p-[0.5rem]' >
-                        <ListItem disablePadding onClick={() => Navigate("/dashboard")} className={`draewr_dashboard_item ${location.pathname === "/dashboard" ? "active" : ""}`}  >
+                        {/* <ListItem disablePadding onClick={() => Navigate("/dashboard")} className={`draewr_dashboard_item ${location.pathname === "/dashboard" ? "active" : ""}`}  >
                             <ListItemButton component="a" disableRipple>
                                 <ListItemIcon className='draewr_dashboard_icon'  >
                                     <DashboardIcon />
                                 </ListItemIcon>
                                 <ListItemText className='draewr_dashboard_text' primary="Dashboard" />
                             </ListItemButton>
-                        </ListItem>
+                        </ListItem> */}
                         <ListItem disablePadding onClick={() => Navigate("/product")} className={`draewr_dashboard_item ${location.pathname === "/product" || location.pathname === "/addproduct" || location.pathname === "/editproduct" ? "active" : ""}`}   >
                             <ListItemButton component="a" disableRipple >
                                 <ListItemIcon className='draewr_dashboard_icon'>
