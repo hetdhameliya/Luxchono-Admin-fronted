@@ -46,7 +46,7 @@ export const OfferApi = createApi({
       query: (body) => {
         const formData = OfferFromDataApi.createOffer(body);
         return {
-          url: `/admin/offer/:id`,
+          url: `/admin/offer/${body.id}`,
           method: "PUT",
           body: formData,
         };
