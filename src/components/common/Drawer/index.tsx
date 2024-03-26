@@ -100,14 +100,14 @@ export default function Drawers() {
                                 <ListItemText className='draewr_dashboard_text' primary="Brand" />
                             </ListItemButton>
                         </ListItem>
-                        <ListItem disablePadding onClick={() => Navigate("/customer")} className={`draewr_dashboard_item ${location.pathname === "/customer" ? "active" : ""}`} >
+                        {/* <ListItem disablePadding onClick={() => Navigate("/customer")} className={`draewr_dashboard_item ${location.pathname === "/customer" ? "active" : ""}`} >
                             <ListItemButton component="a" disableRipple >
                                 <ListItemIcon className='draewr_dashboard_icon'>
                                     <PersonIcon />
                                 </ListItemIcon>
                                 <ListItemText className='draewr_dashboard_text' primary="Customer" />
                             </ListItemButton>
-                        </ListItem>
+                        </ListItem> */}
                         <ListItem disablePadding onClick={() => Navigate("/offer")} className={`draewr_dashboard_item ${location.pathname === "/offer" || location.pathname === "/addoffer" || location.pathname === "/editoffer" || location.pathname === "/viewoffer" ? "active" : ""}`} >
                             <ListItemButton component="a" disableRipple >
                                 <ListItemIcon className='draewr_dashboard_icon'>
