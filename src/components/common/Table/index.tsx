@@ -15,7 +15,7 @@ import './style.scss'
 import Loader from '../Loader';
 import { STRING } from '../../../constants/String';
 import { useEffect } from 'react'
-import { AdminRow, BrandRow, CategoryRow, CustomerRow, OfferRow, OrdersRow, ProductRow } from './TableRow';
+import { AdminRow, BrandRow, CategoryRow, CustomerRow, OfferRow, OrdersRow, ProductRow, RatingRow ,} from './TableRow';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -72,7 +72,7 @@ function stableSort<T>(array: readonly T[] | null | undefined, comparator: (a: T
 
 function EnhancedTableHead(props: any) {
     const { headCells } = props
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, Orders, Customer, Admin } =
+    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, Orders, Customer, Admin ,Rating } =
         props;
     const createSortHandler =
         (property: keyof any) => (event: React.MouseEvent<unknown>) => {
@@ -84,7 +84,7 @@ function EnhancedTableHead(props: any) {
             <TableRow className='bg-header !h-[40px] ' >
                 <TableCell padding="checkbox">
                     <Checkbox
-                        disabled={Orders || Customer || Admin ? true : false}
+                        disabled={Orders || Customer || Admin || Rating ? true : false}
                         disableRipple
                         color="primary"
                         indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -121,7 +121,7 @@ function EnhancedTableHead(props: any) {
     );
 }
 
-export default function Tables({ headCells, rows, isFetching, search, getSelectedDeleteRows, Product, Category, selected, setSelected, handleDeleteOpen, Brand, Orders, handleUpdateOpenConfirmation, Customer, Offer, Admin }: any) {
+export default function Tables({ headCells, rows, isFetching, search, getSelectedDeleteRows, Product, Category, selected, setSelected, handleDeleteOpen, Brand, Orders, handleUpdateOpenConfirmation, Customer, Offer, Admin ,Rating }: any) {
     const [order, setOrder] = React.useState<Order>('asc');
     const [orderBy, setOrderBy] = React.useState<keyof any>('productname');
     // const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -223,6 +223,7 @@ export default function Tables({ headCells, rows, isFetching, search, getSelecte
                             Orders={Orders}
                             Customer={Customer}
                             Admin={Admin}
+                            Rating={Rating}
                         />
 
                         {isFetching ? (
@@ -249,7 +250,7 @@ export default function Tables({ headCells, rows, isFetching, search, getSelecte
                                             sx={{ cursor: 'pointer', fontWeight: "800" }}>
                                             <TableCell padding="checkbox">
                                                 <Checkbox
-                                                    disabled={Orders || Customer || Admin ? true : false}
+                                                    disabled={Orders || Customer || Admin || Rating ? true : false}
                                                     onClick={(event) => handleClick(event, row.id)}
                                                     disableRipple
                                                     color="primary"
@@ -265,6 +266,8 @@ export default function Tables({ headCells, rows, isFetching, search, getSelecte
                                             {Customer && <CustomerRow row={row} index={index} />}
                                             {Offer && <OfferRow row={row} index={index} handleDeleteOpen={handleDeleteOpen} />}
                                             {Admin && <AdminRow row={row} index={index} />}
+
+                                            {Rating && <RatingRow row={row} index={index} />}
 
                                         </TableRow>
                                     );

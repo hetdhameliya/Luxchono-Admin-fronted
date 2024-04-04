@@ -6,7 +6,7 @@ import Toasters from "./components/common/Toasters";
 function App() {
   return (
     <div >
-       <Toasters />
+      <Toasters />
       <Router />
     </div>
   );

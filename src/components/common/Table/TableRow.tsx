@@ -194,12 +194,11 @@ export const CustomerRow = ({ row, index }: any) => {
                 scope="row"
                 padding="none">
                 <div className='flex gap-[10px] items-center'>
-                    <Avatar className='!h-[35px] !w-[35px] !rounded-[10px] !border-header  border-[1px]' alt="c" src={`${BASE_URL}/${row?.profilePic}`} />
-                    {row?.userName || "-"}
+                    {row?.username || "-"}
                 </div>
             </TableCell>
             <TableCell width={"33%"} align="left" padding="none">{row.email || "-"}</TableCell>
-            <TableCell width={"33%"} align="left" padding="none">{row.phone || "-"}</TableCell>
+            <TableCell width={"33%"} align="left" padding="none">{row.phoneNo || "-"}</TableCell>
 
             {/* <TableCell className='w-[5rem]' align="left" padding="none">
                 <div className='flex gap-[5px]'>
@@ -222,6 +221,20 @@ export const AdminRow = ({ row, index, }: any) => {
             <TableCell align="left" padding="none">
                 {row.isAdminVerified ? <CheckOutlinedIcon style={{ color: "green" }} /> :
                     <CloseOutlinedIcon style={{ color: "red" }} />}</TableCell>
+        </>
+    )
+}
+  
+export const RatingRow = ({ row, index, }: any) => {
+
+    console.log(row, "341234564444")
+
+    return (
+        <>
+            <TableCell align="left" padding="none">{row.productName || "-"}</TableCell>
+            <TableCell align="left" padding="none">{row.email || "-"}</TableCell>
+            <TableCell align="left" padding="none">{row.star || "-"}</TableCell>
+            <TableCell align="left" padding="none">{row.description || "-"}</TableCell>
         </>
     )
 }

@@ -39,7 +39,7 @@ export default function Router() {
           <Route path="/brand" element={<Brand />}></Route>
           <Route path="/addbrand" element={<AddBrand />}></Route>
           <Route path="/editbrand" element={<EditBrand />}></Route>
-          {/* <Route path="/dashboard" element={<Dashboard />}></Route> */}
+          <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/product" element={<Product />}></Route>
           <Route path="/addproduct" element={<AddProduct />}></Route>
           <Route path="/editproduct" element={<EditProduct />}></Route>
