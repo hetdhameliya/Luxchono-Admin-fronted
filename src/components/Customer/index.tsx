@@ -118,11 +118,11 @@ export default function CustomerPage() {
                 </div>
             </Paper>
 
-            <Paper className='paperboxshadow h-[83px] mt-[0.8rem] flex  items-center p-[1rem] gap-[10px]'>
+            {/* <Paper className='paperboxshadow h-[83px] mt-[0.8rem] flex  items-center p-[1rem] gap-[10px]'>
                 <Search setinput={setinput}
                     input={input}
                     setsearch={setsearch} placeholder={"Search Customer"} />
-            </Paper>
+            </Paper> */}
 
 
             <div className='mt-[1rem]'>

@@ -247,13 +247,15 @@ export default function OrderPage() {
                 </div>
             </Paper>
 
-            <Paper className='paperboxshadow h-[83px] mt-[0.8rem] flex  items-center p-[1rem] gap-[10px]'>
-                <Search setinput={setinput}
-                    input={input}
-                    setsearch={setsearch} placeholder={STRING.ORDER__SEARCH_PLACHOLDER} />
-                <Selects selectedValues={method} setSelectedValues={setMethod} width={"250px"} height={"45px"} options={MethodOption} placeholder={"Method"} />
-                <Selects selectedValues={status} setSelectedValues={setStatus} width={"250px"} height={"45px"} options={statusOption} placeholder={"Status"} />
-            </Paper>
+
+            {/* <Paper className='paperboxshadow h-[83px] mt-[0.8rem] flex  items-center p-[1rem] gap-[10px]'>
+<Search setinput={setinput}
+    input={input}
+    setsearch={setsearch} placeholder={STRING.ORDER__SEARCH_PLACHOLDER} />
+<Selects selectedValues={method} setSelectedValues={setMethod} width={"250px"} height={"45px"} options={MethodOption} placeholder={"Method"} />
+<Selects selectedValues={status} setSelectedValues={setStatus} width={"250px"} height={"45px"} options={statusOption} placeholder={"Status"} />
+</Paper> */}
+
 
             <div className='mt-[1rem]'>
                 <Tables handleUpdateOpenConfirmation={handleUpdateOpenConfirmation} handleDeleteOpen={handleDeleteSingleOpenConfirmation} selected={selected} setSelected={setSelected} Orders={"Orders"} getSelectedDeleteRows={getSelectedDeleteRows} headCells={headCells} rows={rows} isFetching={isFetching} />
@@ -265,3 +267,4 @@ export default function OrderPage() {
         </div>
     )
 }
+

@@ -19,6 +19,8 @@ export default function VerifiedAdmin() {
 
     const [AdminVerified, { isLoading }] = useAdminVerifiedMutation();
 
+    console.log(unverifyAdmin,"unverifyAdmin")
+
 
     useEffect(() => {
         const data = (AdminData as any)?.data?.filter((item: any) => {
@@ -63,7 +65,7 @@ export default function VerifiedAdmin() {
         <div className='mains_div'>
 
 
-            {!AdminFetching ? (unverifyAdmin?.length !== 0 ? (
+            {!AdminFetching ? ((unverifyAdmin?.length !== 0 && unverifyAdmin !== undefined)  ? (
                 unverifyAdmin?.map((items) => {
 
                     return (
@@ -94,7 +96,7 @@ export default function VerifiedAdmin() {
 
             ) : (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "70vh" }}>
-                    <span style={{ fontWeight: "600", fontSize: "16px" }}>{"Not Data found"}</span>
+                    <span style={{ fontWeight: "600", fontSize: "16px" }}>{"No data available"}</span>
                 </div>
             )) : (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "70vh" }}>
